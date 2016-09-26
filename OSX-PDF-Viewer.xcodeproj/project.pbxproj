@@ -11,6 +11,7 @@
 		220863D81D99D11D00CC0937 /* OSX_PDF_Viewer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 220863D61D99D11D00CC0937 /* OSX_PDF_Viewer.xcdatamodeld */; };
 		220863DA1D99D11D00CC0937 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220863D91D99D11D00CC0937 /* Assets.xcassets */; };
 		220863DD1D99D11D00CC0937 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220863DB1D99D11D00CC0937 /* MainMenu.xib */; };
+		220863E51D99D13100CC0937 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220863E41D99D13100CC0937 /* Quartz.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		220863D91D99D11D00CC0937 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		220863DC1D99D11D00CC0937 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		220863DE1D99D11D00CC0937 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		220863E41D99D13100CC0937 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				220863E51D99D13100CC0937 /* Quartz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,6 +39,7 @@
 		220863C81D99D11C00CC0937 = {
 			isa = PBXGroup;
 			children = (
+				220863E41D99D13100CC0937 /* Quartz.framework */,
 				220863D31D99D11D00CC0937 /* OSX-PDF-Viewer */,
 				220863D21D99D11D00CC0937 /* Products */,
 			);
