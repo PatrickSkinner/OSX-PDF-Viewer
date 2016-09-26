@@ -7,11 +7,14 @@
 //
 
 import Cocoa
+import Quartz
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
+    
+    @IBOutlet weak var ourPDF: PDFView!
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
