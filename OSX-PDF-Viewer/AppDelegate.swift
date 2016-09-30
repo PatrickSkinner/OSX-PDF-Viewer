@@ -15,7 +15,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
     
     @IBOutlet weak var ourPDF: PDFView!
-
+    
+    @IBAction func Open(sender: AnyObject) {
+        let openPanel = NSOpenPanel()
+        openPanel.allowsMultipleSelection = false
+        openPanel.canChooseDirectories = false
+        openPanel.canCreateDirectories = false
+        openPanel.canChooseFiles = true
+        openPanel.beginWithCompletionHandler { (result) -> Void in
+            if result == NSFileHandlingPanelOKButton {
+                //Do what you will
+                //If there's only one URL, surely 'openPanel.URL'
+                //but otherwise a for loop works
+                let URL = openPanel.URL
+                let pdf = PDFDocument(URL: URL)
+                let view = PDFView(frame: CGRect(x: 0, y: 0, width: 500, height: 750))
+                self.ourPDF.setDocument(pdf)
+            }
+        }
+    }
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
@@ -165,6 +183,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // If we got here, it is time to quit.
         return .TerminateNow
     }
+    
+    
 
 }
 
