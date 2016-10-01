@@ -18,6 +18,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var thumbs: PDFThumbnailView!
     
+    @IBOutlet weak var zoomIn: NSToolbar!
+    
+    
     @IBAction func Open(sender: AnyObject) {
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = false
@@ -46,6 +49,58 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
     }
+    
+
+    @IBAction func zoomIn(sender: AnyObject) {
+        ourPDF.zoomIn(sender)
+    }
+    
+    @IBAction func zoomOut(sender: AnyObject) {
+        ourPDF.zoomOut(sender)
+    }
+    
+    @IBAction func scale(sender: AnyObject) {
+        ourPDF.setAutoScales(true)
+    }
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     // MARK: - Core Data stack
 
