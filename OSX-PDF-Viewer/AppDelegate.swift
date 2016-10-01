@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  OSX-PDF-Viewer
 //
-//  Created by Patrick Skinner on 9/27/16.
+//  Created by Patrick Skinner 💯 on 9/27/16.
 //  Copyright © 2016 Patrick Skinner. All rights reserved.
 //
 
@@ -15,7 +15,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
     
     @IBOutlet weak var ourPDF: PDFView!
-
+    
+    @IBOutlet weak var thumbs: PDFThumbnailView!
+    
+    @IBAction func Open(sender: AnyObject) {
+        let openPanel = NSOpenPanel()
+        openPanel.allowsMultipleSelection = false
+        openPanel.canChooseDirectories = false
+        openPanel.canCreateDirectories = false
+        openPanel.canChooseFiles = true
+        openPanel.beginWithCompletionHandler { (result) -> Void in
+            if result == NSFileHandlingPanelOKButton {
+                let URL = openPanel.URL
+                let pdf = PDFDocument(URL: URL)
+                self.ourPDF.setDocument(pdf)
+                var thumbSize: NSSize = NSSize()
+                thumbSize.width = 120
+                thumbSize.height = 200
+                self.thumbs.setThumbnailSize(thumbSize)
+                self.thumbs.setPDFView(self.ourPDF)
+                
+            }
+        }
+    }
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
@@ -165,6 +187,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // If we got here, it is time to quit.
         return .TerminateNow
     }
+    
+    
 
 }
 
