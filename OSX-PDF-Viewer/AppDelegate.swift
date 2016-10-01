@@ -63,6 +63,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ourPDF.setAutoScales(true)
     }
     
+    @IBAction func previousPage(sender: AnyObject){
+        if (ourPDF.canGoToPreviousPage()){
+            ourPDF.goToPreviousPage(sender)
+        }
+    }
+    
+    @IBAction func nextPage(sender: AnyObject){
+        if (ourPDF.canGoToNextPage()){
+            ourPDF.goToNextPage(sender)
+        }
+    }
+    
     
 
     
