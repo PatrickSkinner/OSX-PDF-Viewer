@@ -15,7 +15,6 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="OSX_PDF_Viewer" customModuleProvider="target">
             <connections>
-                <outlet property="Open" destination="IAo-SY-fd9" id="dXm-BP-xNQ"/>
                 <outlet property="ourPDF" destination="7zR-h4-pKf" id="BVD-ua-NNM"/>
                 <outlet property="thumbs" destination="yXO-Uc-Knf" id="aEH-Dw-O3q"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
@@ -80,7 +79,7 @@
                             </menuItem>
                             <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
                                 <connections>
-                                    <action selector="Open:" target="Voe-Tx-rLC" id="lhe-fA-Huv"/>
+                                    <action selector="Open:" target="Voe-Tx-rLC" id="Jbz-3o-22f"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Open Recent" id="tXI-mr-wws">
@@ -699,137 +698,136 @@
                     <constraint firstItem="yXO-Uc-Knf" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="v94-UP-VJV"/>
                 </constraints>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="60341544-4DBF-4BC4-94BA-616D0EF4F6E8" explicitIdentifier="Toolbar" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="9kh-J7-1uc">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="gKq-rY-WQg"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="dC5-A1-dNa"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="akh-ZH-Nzg"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Baq-fo-Vxs"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Vur-VM-BIf"/>
+                    <toolbarItem implicitItemIdentifier="3E9CB472-7104-4182-A7C8-2BFD723B8475" label="Zoom In" paletteLabel="Zoom In" image="NSAddTemplate" id="4m4-AZ-aiR">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="48" height="48"/>
+                        <size key="maxSize" width="48" height="48"/>
+                        <button key="view" id="V0m-6S-gUj">
+                            <rect key="frame" x="1" y="14" width="48" height="48"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="u2i-1E-NdP">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="zoomIn:" target="Voe-Tx-rLC" id="tJJ-X8-6XF"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="7A19FC2F-1EE1-4E9B-95B9-5CD36B98F336" label="Zoom Out" paletteLabel="Zoom Out" image="NSRemoveTemplate" id="QdH-LI-CeY">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="48" height="48"/>
+                        <size key="maxSize" width="48" height="48"/>
+                        <button key="view" id="EH4-KJ-T4s">
+                            <rect key="frame" x="6" y="14" width="48" height="48"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="RF3-JJ-J8o">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="zoomOut:" target="Voe-Tx-rLC" id="eLQ-Bz-KZI"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="B73FC4B5-A0BE-4A79-88BC-64B414446AB1" label="" paletteLabel="" id="H4m-QC-Rhz">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="96" height="22"/>
+                        <size key="maxSize" width="96" height="22"/>
+                        <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="gJS-Y2-5OU">
+                            <rect key="frame" x="0.0" y="14" width="96" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="Rqx-Hl-YFH">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </searchFieldCell>
+                        </searchField>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="889073EC-A1A6-43AE-B226-F127A8CB6DCD" label="Previous Page" paletteLabel="Previous Page" image="NSGoLeftTemplate" id="7SV-lf-f3n">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="48" height="48"/>
+                        <size key="maxSize" width="48" height="48"/>
+                        <button key="view" id="f7k-2C-v48">
+                            <rect key="frame" x="17" y="14" width="48" height="48"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSGoLeftTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="6ta-5n-P6h">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="previousPage:" target="Voe-Tx-rLC" id="6Uf-ON-bZ5"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="6485D005-E108-4605-93AC-DF25E6DFAC8D" label="Page Number" paletteLabel="Page Number" id="Z3m-Lw-2Wd">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="45" height="22"/>
+                        <size key="maxSize" width="96" height="46"/>
+                        <textField key="view" verticalHuggingPriority="750" id="MCf-w9-pkp">
+                            <rect key="frame" x="16" y="14" width="47" height="45"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="YwX-Dd-fVG">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="558D4D62-A226-40D3-AE0D-51AEC311A4F1" label="Next Page" paletteLabel="NextPage" image="NSGoRightTemplate" id="vqR-Uj-Sck">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="48" height="48"/>
+                        <size key="maxSize" width="48" height="48"/>
+                        <button key="view" id="821-Og-hg4">
+                            <rect key="frame" x="5" y="14" width="48" height="48"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSGoRightTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="u7K-Gg-SAQ">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="nextPage:" target="Voe-Tx-rLC" id="2vY-lP-tBW"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="A29C32C6-2D9E-4697-98E0-07AA3385B987" label="Fit to Window" paletteLabel="Fit to Window" id="cmN-Bp-Dyp">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="82" height="32"/>
+                        <size key="maxSize" width="82" height="32"/>
+                        <button key="view" verticalHuggingPriority="750" id="JUE-ba-Gl3">
+                            <rect key="frame" x="0.0" y="14" width="82" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="push" title="Scale" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HTg-FA-SKI">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="scale:" target="Voe-Tx-rLC" id="ZHy-PD-aFb"/>
+                        </connections>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="4m4-AZ-aiR"/>
+                    <toolbarItem reference="QdH-LI-CeY"/>
+                    <toolbarItem reference="cmN-Bp-Dyp"/>
+                    <toolbarItem reference="Vur-VM-BIf"/>
+                    <toolbarItem reference="7SV-lf-f3n"/>
+                    <toolbarItem reference="Z3m-Lw-2Wd"/>
+                    <toolbarItem reference="vqR-Uj-Sck"/>
+                    <toolbarItem reference="Baq-fo-Vxs"/>
+                    <toolbarItem reference="H4m-QC-Rhz"/>
+                </defaultToolbarItems>
+            </toolbar>
             <point key="canvasLocation" x="849" y="846.5"/>
         </window>
-        <toolbar implicitIdentifier="FB064473-BF71-4413-BCB4-ED8E723DF057" explicitIdentifier="Toolbar" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="9kh-J7-1uc">
-            <allowedToolbarItems>
-                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="gKq-rY-WQg"/>
-                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="dC5-A1-dNa"/>
-                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="akh-ZH-Nzg"/>
-                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Baq-fo-Vxs"/>
-                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Vur-VM-BIf"/>
-                <toolbarItem implicitItemIdentifier="3E9CB472-7104-4182-A7C8-2BFD723B8475" label="Zoom In" paletteLabel="Zoom In" image="NSAddTemplate" id="4m4-AZ-aiR">
-                    <nil key="toolTip"/>
-                    <size key="minSize" width="48" height="48"/>
-                    <size key="maxSize" width="48" height="48"/>
-                    <button key="view" id="V0m-6S-gUj">
-                        <rect key="frame" x="1" y="14" width="48" height="48"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAddTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="u2i-1E-NdP">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
-                    <connections>
-                        <action selector="zoomIn:" target="Voe-Tx-rLC" id="tJJ-X8-6XF"/>
-                    </connections>
-                </toolbarItem>
-                <toolbarItem implicitItemIdentifier="7A19FC2F-1EE1-4E9B-95B9-5CD36B98F336" label="Zoom Out" paletteLabel="Zoom Out" image="NSRemoveTemplate" id="QdH-LI-CeY">
-                    <nil key="toolTip"/>
-                    <size key="minSize" width="48" height="48"/>
-                    <size key="maxSize" width="48" height="48"/>
-                    <button key="view" id="EH4-KJ-T4s">
-                        <rect key="frame" x="6" y="14" width="48" height="48"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="RF3-JJ-J8o">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
-                    <connections>
-                        <action selector="zoomOut:" target="Voe-Tx-rLC" id="eLQ-Bz-KZI"/>
-                    </connections>
-                </toolbarItem>
-                <toolbarItem implicitItemIdentifier="B73FC4B5-A0BE-4A79-88BC-64B414446AB1" label="" paletteLabel="" id="H4m-QC-Rhz">
-                    <nil key="toolTip"/>
-                    <size key="minSize" width="96" height="22"/>
-                    <size key="maxSize" width="96" height="22"/>
-                    <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="gJS-Y2-5OU">
-                        <rect key="frame" x="0.0" y="14" width="96" height="22"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="Rqx-Hl-YFH">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </searchFieldCell>
-                    </searchField>
-                </toolbarItem>
-                <toolbarItem implicitItemIdentifier="889073EC-A1A6-43AE-B226-F127A8CB6DCD" label="Previous Page" paletteLabel="Previous Page" image="NSGoLeftTemplate" id="7SV-lf-f3n">
-                    <nil key="toolTip"/>
-                    <size key="minSize" width="48" height="48"/>
-                    <size key="maxSize" width="48" height="48"/>
-                    <button key="view" id="f7k-2C-v48">
-                        <rect key="frame" x="17" y="14" width="48" height="48"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSGoLeftTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="6ta-5n-P6h">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
-                    <connections>
-                        <action selector="previousPage:" target="Voe-Tx-rLC" id="6Uf-ON-bZ5"/>
-                    </connections>
-                </toolbarItem>
-                <toolbarItem implicitItemIdentifier="6485D005-E108-4605-93AC-DF25E6DFAC8D" label="Page Number" paletteLabel="Page Number" id="Z3m-Lw-2Wd">
-                    <nil key="toolTip"/>
-                    <size key="minSize" width="45" height="22"/>
-                    <size key="maxSize" width="96" height="46"/>
-                    <textField key="view" verticalHuggingPriority="750" id="MCf-w9-pkp">
-                        <rect key="frame" x="16" y="14" width="47" height="45"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="YwX-Dd-fVG">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                </toolbarItem>
-                <toolbarItem implicitItemIdentifier="558D4D62-A226-40D3-AE0D-51AEC311A4F1" label="Next Page" paletteLabel="NextPage" image="NSGoRightTemplate" id="vqR-Uj-Sck">
-                    <nil key="toolTip"/>
-                    <size key="minSize" width="48" height="48"/>
-                    <size key="maxSize" width="48" height="48"/>
-                    <button key="view" id="821-Og-hg4">
-                        <rect key="frame" x="5" y="14" width="48" height="48"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSGoRightTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="u7K-Gg-SAQ">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
-                    <connections>
-                        <action selector="nextPage:" target="Voe-Tx-rLC" id="2vY-lP-tBW"/>
-                    </connections>
-                </toolbarItem>
-                <toolbarItem implicitItemIdentifier="A29C32C6-2D9E-4697-98E0-07AA3385B987" label="Fit to Window" paletteLabel="Fit to Window" id="cmN-Bp-Dyp">
-                    <nil key="toolTip"/>
-                    <size key="minSize" width="82" height="32"/>
-                    <size key="maxSize" width="82" height="32"/>
-                    <button key="view" verticalHuggingPriority="750" id="JUE-ba-Gl3">
-                        <rect key="frame" x="0.0" y="14" width="82" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Scale" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HTg-FA-SKI">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
-                    <connections>
-                        <action selector="scale:" target="Voe-Tx-rLC" id="ZHy-PD-aFb"/>
-                    </connections>
-                </toolbarItem>
-            </allowedToolbarItems>
-            <defaultToolbarItems>
-                <toolbarItem reference="4m4-AZ-aiR"/>
-                <toolbarItem reference="QdH-LI-CeY"/>
-                <toolbarItem reference="cmN-Bp-Dyp"/>
-                <toolbarItem reference="Vur-VM-BIf"/>
-                <toolbarItem reference="7SV-lf-f3n"/>
-                <toolbarItem reference="Z3m-Lw-2Wd"/>
-                <toolbarItem reference="vqR-Uj-Sck"/>
-                <toolbarItem reference="Baq-fo-Vxs"/>
-                <toolbarItem reference="H4m-QC-Rhz"/>
-            </defaultToolbarItems>
-            <point key="canvasLocation" x="849.5" y="296"/>
-        </toolbar>
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>
