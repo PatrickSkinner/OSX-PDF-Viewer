@@ -11,7 +11,7 @@ import Quartz
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
+    
     @IBOutlet weak var window: NSWindow!
     
     @IBOutlet weak var ourPDF: PDFView!
@@ -20,6 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var zoomIn: NSToolbar!
     
+    var pdf: PDFDocument = PDFDocument(URL: )
     
     @IBAction func Open(sender: AnyObject) {
         let openPanel = NSOpenPanel()
@@ -30,8 +31,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         openPanel.beginWithCompletionHandler { (result) -> Void in
             if result == NSFileHandlingPanelOKButton {
                 let URL = openPanel.URL
-                let pdf = PDFDocument(URL: URL)
-                self.ourPDF.setDocument(pdf)
+                self.pdf = PDFDocument(URL: URL)
+                self.ourPDF.setDocument(self.pdf)
                 var thumbSize: NSSize = NSSize()
                 thumbSize.width = 120
                 thumbSize.height = 200
@@ -74,6 +75,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             ourPDF.goToNextPage(sender)
         }
     }
+    
+    //@IBAction func search(sender: AnyObject){
+        
+        //let searchString = sender.stringValue()
+        //var selection: PDFSelection
+        //selection = pdf.findString("we", fromSelection: pdf.selectionForEntireDocument(), withOptions: 1)
+        //ourPDF.goToSelection(selection)
+    //}
     
     
 

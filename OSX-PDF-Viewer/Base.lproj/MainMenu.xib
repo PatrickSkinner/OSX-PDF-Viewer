@@ -698,7 +698,7 @@
                     <constraint firstItem="yXO-Uc-Knf" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="v94-UP-VJV"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="60341544-4DBF-4BC4-94BA-616D0EF4F6E8" explicitIdentifier="Toolbar" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="9kh-J7-1uc">
+            <toolbar key="toolbar" implicitIdentifier="89E57FA5-2381-4D57-B519-08482A712EB8" explicitIdentifier="Toolbar" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="9kh-J7-1uc">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="gKq-rY-WQg"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="dC5-A1-dNa"/>
@@ -744,11 +744,14 @@
                         <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="gJS-Y2-5OU">
                             <rect key="frame" x="0.0" y="14" width="96" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="Rqx-Hl-YFH">
+                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" sendsWholeSearchString="YES" id="Rqx-Hl-YFH">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </searchFieldCell>
+                            <connections>
+                                <action selector="search:" target="Voe-Tx-rLC" id="6dH-y1-EiK"/>
+                            </connections>
                         </searchField>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="889073EC-A1A6-43AE-B226-F127A8CB6DCD" label="Previous Page" paletteLabel="Previous Page" image="NSGoLeftTemplate" id="7SV-lf-f3n">
@@ -826,7 +829,7 @@
                     <toolbarItem reference="H4m-QC-Rhz"/>
                 </defaultToolbarItems>
             </toolbar>
-            <point key="canvasLocation" x="849" y="846.5"/>
+            <point key="canvasLocation" x="448" y="865.5"/>
         </window>
     </objects>
     <resources>
