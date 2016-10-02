@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var zoomIn: NSToolbar!
     
-    var pdf: PDFDocument = PDFDocument(URL: )
+    var pdf: PDFDocument!
     
     @IBAction func Open(sender: AnyObject) {
         let openPanel = NSOpenPanel()
@@ -38,6 +38,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 thumbSize.height = 200
                 self.thumbs.setThumbnailSize(thumbSize)
                 self.thumbs.setPDFView(self.ourPDF)
+                let dict: NSDictionary = self.pdf.documentAttributes()
+                if(dict["PDFDocumentTitleAttribute"] != nil){
+                    self.window.title = dict["PDFDocumentTitleAttribute"] as! String
+                } else if(URL!.lastPathComponent != nil){
+                    self.window.title = URL!.lastPathComponent!
+                }
                 
             }
         }
