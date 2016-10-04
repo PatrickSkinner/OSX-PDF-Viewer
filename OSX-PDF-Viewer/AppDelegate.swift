@@ -60,6 +60,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updatePageNum), name: PDFViewPageChangedNotification, object: nil)
     }
+    
+    func updatePageNum(){
+        pageNum.stringValue = ourPDF.currentPage().label()
+    }
 
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
@@ -162,9 +166,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func updatePageNum(){
-        pageNum.stringValue = ourPDF.currentPage().label()
-    }
+    
 
     
     
