@@ -20,7 +20,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var zoomIn: NSToolbar!
     
+    @IBOutlet weak var pageNum: NSTextField!
+    
+    @IBOutlet weak var searchBar: NSToolbarItem!
+    
     var pdf: PDFDocument!
+    
+    var searchValue: Int = 0
+    
+    var selection: [AnyObject] = [AnyObject]()
     
     @IBAction func Open(sender: AnyObject) {
         let openPanel = NSOpenPanel()
@@ -50,7 +58,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updatePageNum), name: PDFViewPageChangedNotification, object: nil)
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -82,15 +90,51 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    //@IBAction func search(sender: AnyObject){
+    @IBAction func jumpToPage(sender: AnyObject){
+        ourPDF.goToPage(pdf.pageAtIndex(Int(pageNum.stringValue)!-1))
+    }
+    
+    @IBAction func search(sender: AnyObject){
         
-        //let searchString = sender.stringValue()
-        //var selection: PDFSelection
-        //selection = pdf.findString("we", fromSelection: pdf.selectionForEntireDocument(), withOptions: 1)
-        //ourPDF.goToSelection(selection)
-    //}
+        let searchString = sender.stringValue()
+        //var selection: [AnyObject]
+        if(!searchString.isEmpty){
+            selection = pdf.findString(searchString!, withOptions: 1)
+        
+            if (!selection.isEmpty) {
+                ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
+        
+                for item in selection {
+                    item.setColor(NSColor(red: 0, green: 0, blue: 1, alpha: 1))
+                }
+                selection[searchValue].setColor(NSColor(red: 1, green: 0, blue: 0, alpha: 1))
+                ourPDF.setHighlightedSelections(selection)
+            }
+        } else {
+            ourPDF.setHighlightedSelections(nil)
+        }
+    }
     
+    @IBAction func searchBack(sender: AnyObject){
+        if(searchValue != 0){
+            searchValue -= 1
+            search(searchBar)
+        }
+    }
     
+    @IBAction func searchforward(sender: AnyObject){
+        if(searchValue == (selection.count - 1)){
+            searchValue = 0
+            search(searchBar)
+        } else {
+            searchValue += 1
+            search(searchBar)
+        }
+    }
+    
+    func updatePageNum(){
+        pageNum.stringValue = ourPDF.currentPage().label()
+    }
 
     
     

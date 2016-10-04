@@ -16,6 +16,8 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="OSX_PDF_Viewer" customModuleProvider="target">
             <connections>
                 <outlet property="ourPDF" destination="7zR-h4-pKf" id="BVD-ua-NNM"/>
+                <outlet property="pageNum" destination="MCf-w9-pkp" id="UuX-Ga-atv"/>
+                <outlet property="searchBar" destination="H4m-QC-Rhz" id="lBg-wT-uHG"/>
                 <outlet property="thumbs" destination="yXO-Uc-Knf" id="aEH-Dw-O3q"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
                 <outlet property="zoomIn" destination="9kh-J7-1uc" id="uaW-h5-vf5"/>
@@ -675,7 +677,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="700" height="609"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="700" height="609"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -698,7 +700,7 @@
                     <constraint firstItem="yXO-Uc-Knf" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="v94-UP-VJV"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="89E57FA5-2381-4D57-B519-08482A712EB8" explicitIdentifier="Toolbar" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="9kh-J7-1uc">
+            <toolbar key="toolbar" implicitIdentifier="044CDFC1-98E4-40CA-B05D-56BC9C9C0727" explicitIdentifier="Toolbar" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="9kh-J7-1uc">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="gKq-rY-WQg"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="dC5-A1-dNa"/>
@@ -744,7 +746,7 @@
                         <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="gJS-Y2-5OU">
                             <rect key="frame" x="0.0" y="14" width="96" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" sendsWholeSearchString="YES" id="Rqx-Hl-YFH">
+                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="Rqx-Hl-YFH">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -783,6 +785,9 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
+                        <connections>
+                            <action selector="jumpToPage:" target="Voe-Tx-rLC" id="ZxS-Ol-UVa"/>
+                        </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="558D4D62-A226-40D3-AE0D-51AEC311A4F1" label="Next Page" paletteLabel="NextPage" image="NSGoRightTemplate" id="vqR-Uj-Sck">
                         <nil key="toolTip"/>
@@ -816,6 +821,38 @@
                             <action selector="scale:" target="Voe-Tx-rLC" id="ZHy-PD-aFb"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="CD9DB9A7-EF24-43B1-85F6-BA4383C251D2" label="Search Back" paletteLabel="Search Back" image="NSGoLeftTemplate" id="jUV-dY-SHm">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="21" height="21"/>
+                        <size key="maxSize" width="21" height="21"/>
+                        <button key="view" verticalHuggingPriority="750" id="Zmt-yd-deS">
+                            <rect key="frame" x="26" y="14" width="21" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSGoLeftTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kBj-rB-Nbe">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="searchBack:" target="Voe-Tx-rLC" id="yza-dl-ceN"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="5EF16B6E-BEE2-4F16-8F34-B7C1A211B027" label="Search Forward" paletteLabel="Search Forward" image="NSGoRightTemplate" id="X72-JK-Zxi">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="21" height="21"/>
+                        <size key="maxSize" width="21" height="21"/>
+                        <button key="view" verticalHuggingPriority="750" id="ShY-pe-JaA">
+                            <rect key="frame" x="35" y="14" width="21" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSGoRightTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="k7j-wD-lfr">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="searchforward:" target="Voe-Tx-rLC" id="1K2-id-ov5"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="4m4-AZ-aiR"/>
@@ -827,9 +864,11 @@
                     <toolbarItem reference="vqR-Uj-Sck"/>
                     <toolbarItem reference="Baq-fo-Vxs"/>
                     <toolbarItem reference="H4m-QC-Rhz"/>
+                    <toolbarItem reference="jUV-dY-SHm"/>
+                    <toolbarItem reference="X72-JK-Zxi"/>
                 </defaultToolbarItems>
             </toolbar>
-            <point key="canvasLocation" x="448" y="865.5"/>
+            <point key="canvasLocation" x="434" y="878.5"/>
         </window>
     </objects>
     <resources>
