@@ -107,9 +107,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
         
                 for item in selection {
-                    item.setColor(NSColor(red: 0, green: 0, blue: 1, alpha: 1))
+                    item.setColor(NSColor(red: 0, green: 0, blue: 0.6, alpha: 0.6))
                 }
-                selection[searchValue].setColor(NSColor(red: 1, green: 0, blue: 0, alpha: 1))
+                selection[searchValue].setColor(NSColor(red: 0.6, green: 0, blue: 0, alpha: 0.6))
                 ourPDF.setHighlightedSelections(selection)
             }
         } else {
@@ -120,44 +120,44 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func searchBack(sender: AnyObject){
         if(searchValue != 0){
+            selection[searchValue].setColor(NSColor(red: 0, green: 0, blue: 0.6, alpha: 0.6))
+            
             searchValue -= 1
+            
             ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
             
-            for item in selection {
-                item.setColor(NSColor(red: 0, green: 0, blue: 1, alpha: 1))
-            }
-            selection[searchValue].setColor(NSColor(red: 1, green: 0, blue: 0, alpha: 1))
+            selection[searchValue].setColor(NSColor(red: 0.6, green: 0, blue: 0, alpha: 0.6))
             ourPDF.setHighlightedSelections(selection)
         } else {
+            selection[searchValue].setColor(NSColor(red: 0, green: 0, blue: 0.6, alpha: 0.6))
+            
             searchValue = selection.count - 1
+            
             ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
             
-            for item in selection {
-                item.setColor(NSColor(red: 0, green: 0, blue: 1, alpha: 1))
-            }
-            selection[searchValue].setColor(NSColor(red: 1, green: 0, blue: 0, alpha: 1))
+            selection[searchValue].setColor(NSColor(red: 0.6, green: 0, blue: 0, alpha: 0.6))
             ourPDF.setHighlightedSelections(selection)
         }
     }
     
     @IBAction func searchforward(sender: AnyObject){
         if(searchValue == (selection.count - 1)){
+            selection[searchValue].setColor(NSColor(red: 0, green: 0, blue: 0.6, alpha: 0.6))
+            
             searchValue = 0
+            
             ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
             
-            for item in selection {
-                item.setColor(NSColor(red: 0, green: 0, blue: 1, alpha: 1))
-            }
-            selection[searchValue].setColor(NSColor(red: 1, green: 0, blue: 0, alpha: 1))
+            selection[searchValue].setColor(NSColor(red: 0.6, green: 0, blue: 0, alpha: 0.6))
             ourPDF.setHighlightedSelections(selection)
         } else {
+            selection[searchValue].setColor(NSColor(red: 0, green: 0, blue: 0.6, alpha: 0.6))
+            
             searchValue += 1
+            
             ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
             
-            for item in selection {
-                item.setColor(NSColor(red: 0, green: 0, blue: 1, alpha: 1))
-            }
-            selection[searchValue].setColor(NSColor(red: 1, green: 0, blue: 0, alpha: 1))
+            selection[searchValue].setColor(NSColor(red: 0.6, green: 0, blue: 0, alpha: 0.6))
             ourPDF.setHighlightedSelections(selection)
         }
     }
