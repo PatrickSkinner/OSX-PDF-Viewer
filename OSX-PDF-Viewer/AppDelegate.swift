@@ -52,7 +52,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 } else if(URL!.lastPathComponent != nil){
                     self.window.title = URL!.lastPathComponent!
                 }
-                
+                self.ourPDF.setAutoScales(true)
             }
         }
     }
@@ -67,10 +67,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
 
     @IBAction func zoomIn(sender: AnyObject) {
+        ourPDF.setAutoScales(false)
         ourPDF.zoomIn(sender)
     }
     
     @IBAction func zoomOut(sender: AnyObject) {
+        ourPDF.setAutoScales(false)
         ourPDF.zoomOut(sender)
     }
     
@@ -111,6 +113,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 ourPDF.setHighlightedSelections(selection)
             }
         } else {
+            selection.removeAll()
             ourPDF.setHighlightedSelections(nil)
         }
     }
@@ -118,17 +121,44 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func searchBack(sender: AnyObject){
         if(searchValue != 0){
             searchValue -= 1
-            search(searchBar)
+            ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
+            
+            for item in selection {
+                item.setColor(NSColor(red: 0, green: 0, blue: 1, alpha: 1))
+            }
+            selection[searchValue].setColor(NSColor(red: 1, green: 0, blue: 0, alpha: 1))
+            ourPDF.setHighlightedSelections(selection)
+        } else {
+            searchValue = selection.count - 1
+            ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
+            
+            for item in selection {
+                item.setColor(NSColor(red: 0, green: 0, blue: 1, alpha: 1))
+            }
+            selection[searchValue].setColor(NSColor(red: 1, green: 0, blue: 0, alpha: 1))
+            ourPDF.setHighlightedSelections(selection)
         }
     }
     
     @IBAction func searchforward(sender: AnyObject){
         if(searchValue == (selection.count - 1)){
             searchValue = 0
-            search(searchBar)
+            ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
+            
+            for item in selection {
+                item.setColor(NSColor(red: 0, green: 0, blue: 1, alpha: 1))
+            }
+            selection[searchValue].setColor(NSColor(red: 1, green: 0, blue: 0, alpha: 1))
+            ourPDF.setHighlightedSelections(selection)
         } else {
             searchValue += 1
-            search(searchBar)
+            ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
+            
+            for item in selection {
+                item.setColor(NSColor(red: 0, green: 0, blue: 1, alpha: 1))
+            }
+            selection[searchValue].setColor(NSColor(red: 1, green: 0, blue: 0, alpha: 1))
+            ourPDF.setHighlightedSelections(selection)
         }
     }
     

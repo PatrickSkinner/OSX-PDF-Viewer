@@ -682,13 +682,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="700" height="609"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <pdfView autoresizesSubviews="NO" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7zR-h4-pKf">
-                        <rect key="frame" x="239" y="20" width="441" height="569"/>
-                    </pdfView>
                     <pdfThumbnailView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yXO-Uc-Knf">
-                        <rect key="frame" x="20" y="20" width="211" height="569"/>
+                        <rect key="frame" x="20" y="20" width="216" height="569"/>
                         <size key="thumbnailSize" width="64" height="64"/>
                     </pdfThumbnailView>
+                    <pdfView autoresizesSubviews="NO" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7zR-h4-pKf">
+                        <rect key="frame" x="244" y="20" width="436" height="569"/>
+                    </pdfView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="7zR-h4-pKf" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="3Xi-Ic-hHj"/>
