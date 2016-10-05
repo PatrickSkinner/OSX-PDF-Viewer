@@ -43,8 +43,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         openPanel.allowedFileTypes = ["pdf"]
         openPanel.beginWithCompletionHandler { (result) -> Void in
             if result == NSFileHandlingPanelOKButton {
-                self.urls = openPanel.URLs
-                self.pdf = PDFDocument(URL: self.urls[0])
+                for url in openPanel.URLs{
+                    self.urls.append(url)
+                }
+                self.pdf = PDFDocument(URL: self.urls[self.urls.endIndex-1])
                 self.ourPDF.setDocument(self.pdf)
                 self.ourPDF.setAutoScales(true)
                 
@@ -57,13 +59,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 let dict: NSDictionary = self.pdf.documentAttributes()
                 if(dict["PDFDocumentTitleAttribute"] != nil){
                     self.window.title = dict["PDFDocumentTitleAttribute"] as! String
-                } else if(self.urls[0].lastPathComponent != nil){
-                    self.window.title = self.urls[0].lastPathComponent!
+                } else if(self.urls[self.urls.endIndex-1].lastPathComponent != nil){
+                    self.window.title = self.urls[self.urls.endIndex-1].lastPathComponent!
                 }
                 
                 for document in self.urls{
                     self.pdfSelector.addItemWithTitle(document.lastPathComponent!)
                 }
+                self.pdfSelector.selectItemAtIndex(self.urls.endIndex-1)
             }
         }
     }
