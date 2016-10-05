@@ -30,6 +30,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var selection: [AnyObject] = [AnyObject]()
     
+    var urls: [NSURL] = [NSURL]()
+    
     @IBAction func Open(sender: AnyObject) {
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = false
@@ -38,21 +40,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         openPanel.canChooseFiles = true
         openPanel.beginWithCompletionHandler { (result) -> Void in
             if result == NSFileHandlingPanelOKButton {
-                let URL = openPanel.URL
-                self.pdf = PDFDocument(URL: URL)
+                self.urls = openPanel.URLs
+                self.pdf = PDFDocument(URL: self.urls[0])
                 self.ourPDF.setDocument(self.pdf)
+                self.ourPDF.setAutoScales(true)
+                
                 var thumbSize: NSSize = NSSize()
                 thumbSize.width = 120
                 thumbSize.height = 200
                 self.thumbs.setThumbnailSize(thumbSize)
                 self.thumbs.setPDFView(self.ourPDF)
+                
                 let dict: NSDictionary = self.pdf.documentAttributes()
                 if(dict["PDFDocumentTitleAttribute"] != nil){
                     self.window.title = dict["PDFDocumentTitleAttribute"] as! String
                 } else if(URL!.lastPathComponent != nil){
                     self.window.title = URL!.lastPathComponent!
                 }
-                self.ourPDF.setAutoScales(true)
+                
             }
         }
     }
