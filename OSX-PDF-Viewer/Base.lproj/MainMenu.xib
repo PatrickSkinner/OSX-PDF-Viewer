@@ -17,7 +17,6 @@
             <connections>
                 <outlet property="ourPDF" destination="7zR-h4-pKf" id="BVD-ua-NNM"/>
                 <outlet property="pageNum" destination="MCf-w9-pkp" id="UuX-Ga-atv"/>
-                <outlet property="pdfSelection" destination="jMR-Ud-QWz" id="DbX-dU-EJP"/>
                 <outlet property="pdfSelector" destination="Js9-Gr-1lb" id="g6A-LD-rt0"/>
                 <outlet property="searchBar" destination="H4m-QC-Rhz" id="lBg-wT-uHG"/>
                 <outlet property="thumbs" destination="yXO-Uc-Knf" id="aEH-Dw-O3q"/>
@@ -702,7 +701,7 @@
                     <constraint firstItem="yXO-Uc-Knf" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="v94-UP-VJV"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="43396AFC-1FB2-4B79-AD2B-EE351F79AD92" explicitIdentifier="Toolbar" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="9kh-J7-1uc">
+            <toolbar key="toolbar" implicitIdentifier="B06DAA46-B245-47A9-9641-31123572F490" explicitIdentifier="Toolbar" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="9kh-J7-1uc">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="gKq-rY-WQg"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="dC5-A1-dNa"/>
@@ -873,6 +872,9 @@
                                     </items>
                                 </menu>
                             </popUpButtonCell>
+                            <connections>
+                                <action selector="selectPDF:" target="Voe-Tx-rLC" id="KQT-AS-oVE"/>
+                            </connections>
                         </popUpButton>
                     </toolbarItem>
                 </allowedToolbarItems>

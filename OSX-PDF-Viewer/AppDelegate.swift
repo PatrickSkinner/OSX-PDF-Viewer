@@ -25,6 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var searchBar: NSToolbarItem!
     
     @IBOutlet weak var pdfSelector: NSPopUpButton!
+    
     var pdf: PDFDocument!
     
     var searchValue: Int = 0
@@ -68,8 +69,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updatePageNum), name: PDFViewPageChangedNotification, object: nil)
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updatePageNum), name: PDFViewPageChangedNotification, object: nil)
         
         self.pdfSelector.removeAllItems()
@@ -188,6 +187,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    @IBAction func selectPDF(sender: AnyObject) {
+        let list: NSPopUpButton = sender as! NSPopUpButton
+        self.pdf = PDFDocument(URL: urls[list.indexOfSelectedItem] )
+        self.ourPDF.setDocument(self.pdf)
+        
+        //self.thumbs.setPDFView(self.ourPDF)
+        
+        let dict: NSDictionary = self.pdf.documentAttributes()
+        if(dict["PDFDocumentTitleAttribute"] != nil){
+            self.window.title = dict["PDFDocumentTitleAttribute"] as! String
+        } else if(self.urls[list.indexOfSelectedItem].lastPathComponent != nil){
+            self.window.title = self.urls[list.indexOfSelectedItem].lastPathComponent!
+        }
+    }
     
 
     
