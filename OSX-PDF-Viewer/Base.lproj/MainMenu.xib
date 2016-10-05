@@ -700,7 +700,7 @@
                     <constraint firstItem="yXO-Uc-Knf" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="v94-UP-VJV"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="77A69B29-E397-4A30-AE99-BD1A5880FD36" explicitIdentifier="Toolbar" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="9kh-J7-1uc">
+            <toolbar key="toolbar" implicitIdentifier="811CA268-593C-4362-AA7E-0255C6FDD9D7" explicitIdentifier="Toolbar" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="9kh-J7-1uc">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="gKq-rY-WQg"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="dC5-A1-dNa"/>
@@ -837,12 +837,12 @@
                             </connections>
                         </button>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="882C130F-6E96-4E2E-986B-024285B41B46" label="" paletteLabel="Custom View" image="NSGoRightTemplate" id="vnD-pe-rMH">
+                    <toolbarItem implicitItemIdentifier="882C130F-6E96-4E2E-986B-024285B41B46" label="" paletteLabel="Search Forward" image="NSGoRightTemplate" id="vnD-pe-rMH">
                         <nil key="toolTip"/>
                         <size key="minSize" width="33" height="25"/>
-                        <size key="maxSize" width="128" height="25"/>
+                        <size key="maxSize" width="36" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="GOd-wa-azP">
-                            <rect key="frame" x="20" y="14" width="36" height="25"/>
+                            <rect key="frame" x="27" y="14" width="36" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSGoRightTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MxF-Am-nH0">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
