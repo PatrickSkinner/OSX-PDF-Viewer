@@ -145,10 +145,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
                 searchValue -= 1
             
-                ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
-            
-                selection[searchValue].setColor(NSColor(red: 0.6, green: 0, blue: 0, alpha: 0.6))
-                ourPDF.setHighlightedSelections(selection)
+                goToSelection()
             }
         } else {
             if (!selection.isEmpty){
@@ -156,10 +153,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
                 searchValue = selection.count - 1
             
-                ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
-            
-                selection[searchValue].setColor(NSColor(red: 0.6, green: 0, blue: 0, alpha: 0.6))
-                ourPDF.setHighlightedSelections(selection)
+                goToSelection()
             }
         }
     }
@@ -171,10 +165,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
                 searchValue = 0
             
-                ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
-            
-                selection[searchValue].setColor(NSColor(red: 0.6, green: 0, blue: 0, alpha: 0.6))
-                ourPDF.setHighlightedSelections(selection)
+                goToSelection()
             }
         } else {
             if (!selection.isEmpty){
@@ -182,12 +173,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
                 searchValue += 1
             
-                ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
-            
-                selection[searchValue].setColor(NSColor(red: 0.6, green: 0, blue: 0, alpha: 0.6))
-                ourPDF.setHighlightedSelections(selection)
+                goToSelection()
             }
         }
+    }
+    
+    func goToSelection(){
+        ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
+        
+        selection[searchValue].setColor(NSColor(red: 0.6, green: 0, blue: 0, alpha: 0.6))
+        ourPDF.setHighlightedSelections(selection)
     }
     
     @IBAction func selectPDF(sender: AnyObject) {

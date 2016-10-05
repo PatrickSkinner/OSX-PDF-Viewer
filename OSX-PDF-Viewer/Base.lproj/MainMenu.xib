@@ -677,7 +677,7 @@
         <window title="OSX-PDF-Viewer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="700" height="609"/>
+            <rect key="contentRect" x="335" y="390" width="700" height="749"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="700" height="749"/>
@@ -701,10 +701,10 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <size key="minSize" width="643" height="130"/>
-                                    <size key="maxSize" width="648" height="10000000"/>
+                                    <size key="maxSize" width="660" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="643" height="130"/>
-                                    <size key="maxSize" width="648" height="10000000"/>
+                                    <size key="maxSize" width="660" height="10000000"/>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -713,7 +713,7 @@
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="lKT-fx-Fu8">
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="lKT-fx-Fu8">
                             <rect key="frame" x="644" y="1" width="15" height="130"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -925,7 +925,7 @@
                     <toolbarItem reference="jMR-Ud-QWz"/>
                 </defaultToolbarItems>
             </toolbar>
-            <point key="canvasLocation" x="397" y="938.5"/>
+            <point key="canvasLocation" x="397" y="1008.5"/>
         </window>
     </objects>
     <resources>
