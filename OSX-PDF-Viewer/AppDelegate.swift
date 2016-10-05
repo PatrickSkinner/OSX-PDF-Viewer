@@ -13,18 +13,13 @@ import Quartz
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var window: NSWindow!
-    
     @IBOutlet weak var ourPDF: PDFView!
-    
     @IBOutlet weak var thumbs: PDFThumbnailView!
-    
     @IBOutlet weak var zoomIn: NSToolbar!
-    
     @IBOutlet weak var pageNum: NSTextField!
-    
     @IBOutlet weak var searchBar: NSToolbarItem!
-    
     @IBOutlet weak var pdfSelector: NSPopUpButton!
+    @IBOutlet weak var textField: NSTextField!
     
     var pdf: PDFDocument!
     
@@ -33,6 +28,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var selection: [AnyObject] = [AnyObject]()
     
     var urls: [NSURL] = [NSURL]()
+    
+    var notes = [String: String]()
     
     @IBAction func Open(sender: AnyObject) {
         let openPanel = NSOpenPanel()
@@ -75,10 +72,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updatePageNum), name: PDFViewPageChangedNotification, object: nil)
         
         self.pdfSelector.removeAllItems()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(noteUpdated), name: NSTextDidChangeNotification, object: nil)
     }
     
     func updatePageNum(){
         pageNum.stringValue = ourPDF.currentPage().label()
+        notePageUpdated()
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -197,6 +197,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.window.title = dict["PDFDocumentTitleAttribute"] as! String
         } else if(self.urls[list.indexOfSelectedItem].lastPathComponent != nil){
             self.window.title = self.urls[list.indexOfSelectedItem].lastPathComponent!
+        }
+    }
+    
+    
+    func noteUpdated(){
+        if(pdf != nil){
+            let noteKey = ourPDF.currentPage().label() + (pdf!.documentURL().URLByDeletingPathExtension?.lastPathComponent)!
+            notes[noteKey] = textField.stringValue
+        }
+    }
+    
+    func notePageUpdated(){
+        let noteKey = ourPDF.currentPage().label() + (pdf!.documentURL().URLByDeletingPathExtension?.lastPathComponent)!
+        if(notes[noteKey] == nil){
+            textField.stringValue = ""
+        } else {
+            textField.stringValue = notes[noteKey]!
         }
     }
     
