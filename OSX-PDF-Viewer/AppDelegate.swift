@@ -124,45 +124,53 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func searchBack(sender: AnyObject){
         if(searchValue != 0){
-            selection[searchValue].setColor(NSColor(red: 0, green: 0, blue: 0.6, alpha: 0.6))
+            if (!selection.isEmpty){
+                selection[searchValue].setColor(NSColor(red: 0, green: 0, blue: 0.6, alpha: 0.6))
             
-            searchValue -= 1
+                searchValue -= 1
             
-            ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
+                ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
             
-            selection[searchValue].setColor(NSColor(red: 0.6, green: 0, blue: 0, alpha: 0.6))
-            ourPDF.setHighlightedSelections(selection)
+                selection[searchValue].setColor(NSColor(red: 0.6, green: 0, blue: 0, alpha: 0.6))
+                ourPDF.setHighlightedSelections(selection)
+            }
         } else {
-            selection[searchValue].setColor(NSColor(red: 0, green: 0, blue: 0.6, alpha: 0.6))
+            if (!selection.isEmpty){
+                selection[searchValue].setColor(NSColor(red: 0, green: 0, blue: 0.6, alpha: 0.6))
             
-            searchValue = selection.count - 1
+                searchValue = selection.count - 1
             
-            ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
+                ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
             
-            selection[searchValue].setColor(NSColor(red: 0.6, green: 0, blue: 0, alpha: 0.6))
-            ourPDF.setHighlightedSelections(selection)
+                selection[searchValue].setColor(NSColor(red: 0.6, green: 0, blue: 0, alpha: 0.6))
+                ourPDF.setHighlightedSelections(selection)
+            }
         }
     }
     
     @IBAction func searchforward(sender: AnyObject){
         if(searchValue == (selection.count - 1)){
-            selection[searchValue].setColor(NSColor(red: 0, green: 0, blue: 0.6, alpha: 0.6))
+            if (!selection.isEmpty){
+                selection[searchValue].setColor(NSColor(red: 0, green: 0, blue: 0.6, alpha: 0.6))
             
-            searchValue = 0
+                searchValue = 0
             
-            ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
+                ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
             
-            selection[searchValue].setColor(NSColor(red: 0.6, green: 0, blue: 0, alpha: 0.6))
-            ourPDF.setHighlightedSelections(selection)
+                selection[searchValue].setColor(NSColor(red: 0.6, green: 0, blue: 0, alpha: 0.6))
+                ourPDF.setHighlightedSelections(selection)
+            }
         } else {
-            selection[searchValue].setColor(NSColor(red: 0, green: 0, blue: 0.6, alpha: 0.6))
+            if (!selection.isEmpty){
+                selection[searchValue].setColor(NSColor(red: 0, green: 0, blue: 0.6, alpha: 0.6))
             
-            searchValue += 1
+                searchValue += 1
             
-            ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
+                ourPDF.goToSelection(selection[searchValue] as! PDFSelection )
             
-            selection[searchValue].setColor(NSColor(red: 0.6, green: 0, blue: 0, alpha: 0.6))
-            ourPDF.setHighlightedSelections(selection)
+                selection[searchValue].setColor(NSColor(red: 0.6, green: 0, blue: 0, alpha: 0.6))
+                ourPDF.setHighlightedSelections(selection)
+            }
         }
     }
     
