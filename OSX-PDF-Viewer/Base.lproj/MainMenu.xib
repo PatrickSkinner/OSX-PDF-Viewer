@@ -17,6 +17,8 @@
             <connections>
                 <outlet property="ourPDF" destination="7zR-h4-pKf" id="BVD-ua-NNM"/>
                 <outlet property="pageNum" destination="MCf-w9-pkp" id="UuX-Ga-atv"/>
+                <outlet property="pdfSelection" destination="jMR-Ud-QWz" id="DbX-dU-EJP"/>
+                <outlet property="pdfSelector" destination="Js9-Gr-1lb" id="g6A-LD-rt0"/>
                 <outlet property="searchBar" destination="H4m-QC-Rhz" id="lBg-wT-uHG"/>
                 <outlet property="thumbs" destination="yXO-Uc-Knf" id="aEH-Dw-O3q"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
@@ -700,7 +702,7 @@
                     <constraint firstItem="yXO-Uc-Knf" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="v94-UP-VJV"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="811CA268-593C-4362-AA7E-0255C6FDD9D7" explicitIdentifier="Toolbar" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="9kh-J7-1uc">
+            <toolbar key="toolbar" implicitIdentifier="43396AFC-1FB2-4B79-AD2B-EE351F79AD92" explicitIdentifier="Toolbar" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="9kh-J7-1uc">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="gKq-rY-WQg"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="dC5-A1-dNa"/>
@@ -710,7 +712,7 @@
                     <toolbarItem implicitItemIdentifier="B73FC4B5-A0BE-4A79-88BC-64B414446AB1" label="" paletteLabel="" id="H4m-QC-Rhz">
                         <nil key="toolTip"/>
                         <size key="minSize" width="96" height="22"/>
-                        <size key="maxSize" width="96" height="22"/>
+                        <size key="maxSize" width="96" height="25"/>
                         <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="gJS-Y2-5OU">
                             <rect key="frame" x="0.0" y="14" width="96" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -744,7 +746,7 @@
                     <toolbarItem implicitItemIdentifier="A29C32C6-2D9E-4697-98E0-07AA3385B987" label="" paletteLabel="Fit to Window" id="cmN-Bp-Dyp">
                         <nil key="toolTip"/>
                         <size key="minSize" width="82" height="32"/>
-                        <size key="maxSize" width="82" height="32"/>
+                        <size key="maxSize" width="82" height="34"/>
                         <button key="view" verticalHuggingPriority="750" id="JUE-ba-Gl3">
                             <rect key="frame" x="0.0" y="14" width="82" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -853,10 +855,30 @@
                             </buttonCell>
                         </button>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="9D8640C5-C152-46D8-8E8F-534AB77ADC43" label="" paletteLabel="PDF Selectah" id="jMR-Ud-QWz">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="100" height="26"/>
+                        <size key="maxSize" width="100" height="26"/>
+                        <popUpButton key="view" verticalHuggingPriority="750" id="Js9-Gr-1lb">
+                            <rect key="frame" x="0.0" y="14" width="100" height="26"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="S3S-13-oTh" id="TEy-AB-qo2">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="qJ2-r9-iBd">
+                                    <items>
+                                        <menuItem title="Item 1" id="kfG-S7-4gr"/>
+                                        <menuItem state="on" id="S3S-13-oTh"/>
+                                        <menuItem title="Item 3" id="L4M-v3-ouq"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                        </popUpButton>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
-                    <toolbarItem reference="t3h-R7-yct"/>
                     <toolbarItem reference="LQB-jl-JpT"/>
+                    <toolbarItem reference="t3h-R7-yct"/>
                     <toolbarItem reference="cmN-Bp-Dyp"/>
                     <toolbarItem reference="Vur-VM-BIf"/>
                     <toolbarItem reference="gWq-A0-qMU"/>
@@ -866,9 +888,11 @@
                     <toolbarItem reference="daL-8r-fRB"/>
                     <toolbarItem reference="H4m-QC-Rhz"/>
                     <toolbarItem reference="vnD-pe-rMH"/>
+                    <toolbarItem reference="Vur-VM-BIf"/>
+                    <toolbarItem reference="jMR-Ud-QWz"/>
                 </defaultToolbarItems>
             </toolbar>
-            <point key="canvasLocation" x="373" y="1319.5"/>
+            <point key="canvasLocation" x="351" y="1317.5"/>
         </window>
     </objects>
     <resources>

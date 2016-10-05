@@ -24,6 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var searchBar: NSToolbarItem!
     
+    @IBOutlet weak var pdfSelector: NSPopUpButton!
     var pdf: PDFDocument!
     
     var searchValue: Int = 0
@@ -34,10 +35,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func Open(sender: AnyObject) {
         let openPanel = NSOpenPanel()
-        openPanel.allowsMultipleSelection = false
+        openPanel.allowsMultipleSelection = true
         openPanel.canChooseDirectories = false
         openPanel.canCreateDirectories = false
         openPanel.canChooseFiles = true
+        openPanel.allowedFileTypes = ["pdf"]
         openPanel.beginWithCompletionHandler { (result) -> Void in
             if result == NSFileHandlingPanelOKButton {
                 self.urls = openPanel.URLs
@@ -54,16 +56,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 let dict: NSDictionary = self.pdf.documentAttributes()
                 if(dict["PDFDocumentTitleAttribute"] != nil){
                     self.window.title = dict["PDFDocumentTitleAttribute"] as! String
-                } else if(URL!.lastPathComponent != nil){
-                    self.window.title = URL!.lastPathComponent!
+                } else if(self.urls[0].lastPathComponent != nil){
+                    self.window.title = self.urls[0].lastPathComponent!
                 }
                 
+                for document in self.urls{
+                    self.pdfSelector.addItemWithTitle(document.lastPathComponent!)
+                }
             }
         }
     }
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updatePageNum), name: PDFViewPageChangedNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updatePageNum), name: PDFViewPageChangedNotification, object: nil)
+        
+        self.pdfSelector.removeAllItems()
     }
     
     func updatePageNum(){
