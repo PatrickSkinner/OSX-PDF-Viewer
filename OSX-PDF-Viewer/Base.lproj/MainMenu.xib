@@ -16,6 +16,7 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="OSX_PDF_Viewer" customModuleProvider="target">
             <connections>
                 <outlet property="bookmarkSelector" destination="r84-S1-auO" id="1BL-gI-dbK"/>
+                <outlet property="bookmarkTitle" destination="TPL-3I-DAH" id="vrd-J5-DB7"/>
                 <outlet property="ourPDF" destination="MnL-f5-5BI" id="KNX-WA-7Ne"/>
                 <outlet property="pageNum" destination="MCf-w9-pkp" id="UuX-Ga-atv"/>
                 <outlet property="pdfSelector" destination="Js9-Gr-1lb" id="g6A-LD-rt0"/>
@@ -749,6 +750,9 @@
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="bookmarkSave:" target="Voe-Tx-rLC" id="uRd-kM-GJU"/>
+                        </connections>
                     </button>
                     <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r84-S1-auO">
                         <rect key="frame" x="607" y="4" width="76" height="26"/>
@@ -763,6 +767,9 @@
                                 </items>
                             </menu>
                         </popUpButtonCell>
+                        <connections>
+                            <action selector="bookmarkSelect:" target="Voe-Tx-rLC" id="npF-c7-wpX"/>
+                        </connections>
                     </popUpButton>
                     <searchField wantsLayer="YES" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vPA-Ub-IWG">
                         <rect key="frame" x="58" y="8" width="130" height="22"/>
@@ -785,6 +792,14 @@
                             <action selector="searchforward:" target="Voe-Tx-rLC" id="hXD-9L-iQt"/>
                         </connections>
                     </button>
+                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TPL-3I-DAH">
+                        <rect key="frame" x="350" y="7" width="135" height="22"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Bookmark Title" drawsBackground="YES" id="XUf-ym-MLF">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="vPA-Ub-IWG" firstAttribute="leading" secondItem="XcI-pr-e0O" secondAttribute="trailing" constant="8" id="29k-mr-Dks"/>
@@ -797,7 +812,9 @@
                     <constraint firstItem="r84-S1-auO" firstAttribute="leading" secondItem="RC0-bT-QJh" secondAttribute="trailing" constant="8" id="Jhl-ou-keY"/>
                     <constraint firstItem="XcI-pr-e0O" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="LVB-el-Fnp"/>
                     <constraint firstAttribute="bottom" secondItem="bQk-pX-CzM" secondAttribute="bottom" constant="45" id="RbY-8n-V3I"/>
+                    <constraint firstItem="TPL-3I-DAH" firstAttribute="top" secondItem="bQk-pX-CzM" secondAttribute="bottom" constant="16" id="XSm-ho-EWU"/>
                     <constraint firstItem="LKc-9X-GOx" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="c39-j6-H1I"/>
+                    <constraint firstAttribute="bottom" secondItem="TPL-3I-DAH" secondAttribute="bottom" constant="7" id="fYs-O2-xFU"/>
                     <constraint firstAttribute="trailing" secondItem="LKc-9X-GOx" secondAttribute="trailing" constant="20" id="gUz-F8-Gvw"/>
                     <constraint firstAttribute="bottom" secondItem="fIQ-Cy-X4E" secondAttribute="bottom" constant="7" id="hD6-v7-CKn"/>
                     <constraint firstAttribute="bottom" secondItem="r84-S1-auO" secondAttribute="bottom" constant="7" id="iwL-j2-G2a"/>
@@ -807,6 +824,7 @@
                     <constraint firstItem="LKc-9X-GOx" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="nzy-hk-iyX"/>
                     <constraint firstItem="RC0-bT-QJh" firstAttribute="top" secondItem="bQk-pX-CzM" secondAttribute="bottom" constant="16" id="qqc-2d-WyD"/>
                     <constraint firstItem="fIQ-Cy-X4E" firstAttribute="leading" secondItem="vPA-Ub-IWG" secondAttribute="trailing" constant="8" id="vQf-uN-fIB"/>
+                    <constraint firstItem="RC0-bT-QJh" firstAttribute="leading" secondItem="TPL-3I-DAH" secondAttribute="trailing" constant="8" id="vgd-5f-nts"/>
                     <constraint firstAttribute="trailing" secondItem="r84-S1-auO" secondAttribute="trailing" constant="20" id="yO8-N6-VAW"/>
                 </constraints>
             </view>

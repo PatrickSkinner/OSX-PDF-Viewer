@@ -20,6 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var textField: NSTextField!
     @IBOutlet weak var bookmarkSelector: NSPopUpButton!
     @IBOutlet weak var saveBookmark: NSButton!
+    @IBOutlet weak var bookmarkTitle: NSTextField!
     
     var pdf: PDFDocument!
     
@@ -30,6 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var urls: [NSURL] = [NSURL]()
     
     var notes = [String: String]()
+    var bookmarks = [String: [String]]()
     
     @IBAction func Open(sender: AnyObject) {
         let openPanel = NSOpenPanel()
@@ -75,8 +77,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updatePageNum), name: PDFViewPageChangedNotification, object: nil)
         
-        self.pdfSelector.removeAllItems()
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(noteUpdated), name: NSTextDidChangeNotification, object: nil)
         
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -85,8 +85,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         self.bookmarkSelector.removeAllItems()
+        self.pdfSelector.removeAllItems()
         
-        //self.window.setContentBorderThickness(32, forEdge: NSRectEdge.MinY)
     }
     
     func updatePageNum(){
@@ -269,8 +269,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             textField.stringValue = notes[noteKey]!
         }
     }
+
+    @IBAction func bookmarkSave(sender: AnyObject) {
+        if(pdf != nil){
+            let bookmarkKey = (pdf!.documentURL().URLByDeletingPathExtension?.lastPathComponent)!
+            if (bookmarkTitle.stringValue != ""){
+                bookmarks[bookmarkTitle.stringValue] = [ourPDF.currentPage().label(), bookmarkKey]
+                bookmarkSelector.addItemWithTitle(bookmarkTitle.stringValue)
+                bookmarkTitle.stringValue = ""
+            }
+            
+        }
+    }
     
 
+    @IBAction func bookmarkSelect(sender: AnyObject) {
+        let list: NSPopUpButton = sender as! NSPopUpButton
+        
+        let bookmarkname = list.titleOfSelectedItem
+        var pageString = bookmarks[bookmarkname!]
+        
+        let pageNum = Int(pageString![0])
+        
+        
+        ourPDF.goToPage(pdf.pageAtIndex(pageNum! - 1))
+
+    }
     
     
     
