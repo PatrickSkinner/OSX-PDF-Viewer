@@ -76,6 +76,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.pdfSelector.removeAllItems()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(noteUpdated), name: NSTextDidChangeNotification, object: nil)
+        
+        self.window.setContentBorderThickness(32, forEdge: NSRectEdge.MinY)
     }
     
     func updatePageNum(){
@@ -115,7 +117,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func jumpToPage(sender: AnyObject){
-        ourPDF.goToPage(pdf.pageAtIndex(Int(pageNum.stringValue)!-1))
+        if(Int(pageNum.stringValue) != nil && ourPDF != nil){
+            ourPDF.goToPage(pdf.pageAtIndex(Int(pageNum.stringValue)!-1))
+        }
     }
     
     @IBAction func search(sender: AnyObject){
