@@ -15,9 +15,11 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="OSX_PDF_Viewer" customModuleProvider="target">
             <connections>
+                <outlet property="bookmarkSelector" destination="r84-S1-auO" id="1BL-gI-dbK"/>
                 <outlet property="ourPDF" destination="MnL-f5-5BI" id="KNX-WA-7Ne"/>
                 <outlet property="pageNum" destination="MCf-w9-pkp" id="UuX-Ga-atv"/>
                 <outlet property="pdfSelector" destination="Js9-Gr-1lb" id="g6A-LD-rt0"/>
+                <outlet property="saveBookmark" destination="RC0-bT-QJh" id="zWO-Dw-Fxd"/>
                 <outlet property="textField" destination="bQk-pX-CzM" id="IWj-ep-7Ss"/>
                 <outlet property="thumbs" destination="Lpw-pz-AmV" id="nSL-db-u8q"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>

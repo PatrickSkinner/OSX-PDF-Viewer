@@ -18,6 +18,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var pageNum: NSTextField!
     @IBOutlet weak var pdfSelector: NSPopUpButton!
     @IBOutlet weak var textField: NSTextField!
+    @IBOutlet weak var bookmarkSelector: NSPopUpButton!
+    @IBOutlet weak var saveBookmark: NSButton!
     
     var pdf: PDFDocument!
     
@@ -81,6 +83,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let noteDictionary = defaults.dictionaryForKey("noteDictionaryKey"){
             notes = noteDictionary as! [String: String]
         }
+        
+        self.bookmarkSelector.removeAllItems()
         
         //self.window.setContentBorderThickness(32, forEdge: NSRectEdge.MinY)
     }
