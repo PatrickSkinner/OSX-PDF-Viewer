@@ -66,6 +66,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.pdfSelector.selectItemAtIndex(self.urls.endIndex-1)
                 
                 self.ourPDF.layoutDocumentView()
+                
+                self.notePageUpdated()
             }
         }
     }
@@ -78,7 +80,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(noteUpdated), name: NSTextDidChangeNotification, object: nil)
         
         let defaults = NSUserDefaults.standardUserDefaults()
-        if var noteDictionary = defaults.dictionaryForKey("noteDictionaryKey"){
+        if let noteDictionary = defaults.dictionaryForKey("noteDictionaryKey"){
             notes = noteDictionary as! [String: String]
         }
         
@@ -209,6 +211,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else if(self.urls[list.indexOfSelectedItem].lastPathComponent != nil){
             self.window.title = self.urls[list.indexOfSelectedItem].lastPathComponent!
         }
+        notePageUpdated()
+        
     }
     
     
