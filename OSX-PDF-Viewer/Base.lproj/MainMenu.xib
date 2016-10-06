@@ -744,8 +744,8 @@
                             <real value="250"/>
                         </holdingPriorities>
                     </splitView>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RC0-bT-QJh">
-                        <rect key="frame" x="493" y="5" width="108" height="25"/>
+                    <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RC0-bT-QJh">
+                        <rect key="frame" x="434" y="6" width="108" height="25"/>
                         <buttonCell key="cell" type="roundTextured" title="Save Bookmark" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cu1-g8-BUb">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -755,7 +755,7 @@
                         </connections>
                     </button>
                     <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r84-S1-auO">
-                        <rect key="frame" x="607" y="4" width="76" height="26"/>
+                        <rect key="frame" x="548" y="4" width="135" height="26"/>
                         <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CPB-yl-6Fa" id="4pQ-0r-toE">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
@@ -793,7 +793,7 @@
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TPL-3I-DAH">
-                        <rect key="frame" x="350" y="7" width="135" height="22"/>
+                        <rect key="frame" x="291" y="7" width="135" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Bookmark Title" drawsBackground="YES" id="XUf-ym-MLF">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -804,15 +804,13 @@
                 <constraints>
                     <constraint firstItem="vPA-Ub-IWG" firstAttribute="leading" secondItem="XcI-pr-e0O" secondAttribute="trailing" constant="8" id="29k-mr-Dks"/>
                     <constraint firstAttribute="bottom" secondItem="LKc-9X-GOx" secondAttribute="bottom" constant="145" id="39j-OR-rhd"/>
-                    <constraint firstItem="r84-S1-auO" firstAttribute="top" secondItem="bQk-pX-CzM" secondAttribute="bottom" constant="17" id="3Zm-Ad-0er"/>
                     <constraint firstItem="bQk-pX-CzM" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="6lN-yY-y8d"/>
                     <constraint firstAttribute="bottom" secondItem="RC0-bT-QJh" secondAttribute="bottom" constant="7" id="Cen-cf-Cir"/>
+                    <constraint firstAttribute="trailing" secondItem="RC0-bT-QJh" secondAttribute="trailing" constant="158" id="EVL-OJ-BWb"/>
                     <constraint firstAttribute="bottom" secondItem="XcI-pr-e0O" secondAttribute="bottom" constant="8" id="Ewl-LR-PrR"/>
-                    <constraint firstAttribute="trailing" secondItem="RC0-bT-QJh" secondAttribute="trailing" constant="99" id="Fvk-iu-qwp"/>
-                    <constraint firstItem="r84-S1-auO" firstAttribute="leading" secondItem="RC0-bT-QJh" secondAttribute="trailing" constant="8" id="Jhl-ou-keY"/>
                     <constraint firstItem="XcI-pr-e0O" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="LVB-el-Fnp"/>
                     <constraint firstAttribute="bottom" secondItem="bQk-pX-CzM" secondAttribute="bottom" constant="45" id="RbY-8n-V3I"/>
-                    <constraint firstItem="TPL-3I-DAH" firstAttribute="top" secondItem="bQk-pX-CzM" secondAttribute="bottom" constant="16" id="XSm-ho-EWU"/>
+                    <constraint firstAttribute="trailing" secondItem="TPL-3I-DAH" secondAttribute="trailing" constant="274" id="YcL-Zd-aln"/>
                     <constraint firstItem="LKc-9X-GOx" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="c39-j6-H1I"/>
                     <constraint firstAttribute="bottom" secondItem="TPL-3I-DAH" secondAttribute="bottom" constant="7" id="fYs-O2-xFU"/>
                     <constraint firstAttribute="trailing" secondItem="LKc-9X-GOx" secondAttribute="trailing" constant="20" id="gUz-F8-Gvw"/>
@@ -822,9 +820,8 @@
                     <constraint firstAttribute="trailing" secondItem="bQk-pX-CzM" secondAttribute="trailing" constant="20" id="mPo-BR-MPz"/>
                     <constraint firstAttribute="bottom" secondItem="vPA-Ub-IWG" secondAttribute="bottom" constant="8" id="nxZ-Eq-sVf"/>
                     <constraint firstItem="LKc-9X-GOx" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="nzy-hk-iyX"/>
-                    <constraint firstItem="RC0-bT-QJh" firstAttribute="top" secondItem="bQk-pX-CzM" secondAttribute="bottom" constant="16" id="qqc-2d-WyD"/>
                     <constraint firstItem="fIQ-Cy-X4E" firstAttribute="leading" secondItem="vPA-Ub-IWG" secondAttribute="trailing" constant="8" id="vQf-uN-fIB"/>
-                    <constraint firstItem="RC0-bT-QJh" firstAttribute="leading" secondItem="TPL-3I-DAH" secondAttribute="trailing" constant="8" id="vgd-5f-nts"/>
+                    <constraint firstItem="r84-S1-auO" firstAttribute="leading" secondItem="RC0-bT-QJh" secondAttribute="trailing" constant="8" id="wqE-UR-LtP"/>
                     <constraint firstAttribute="trailing" secondItem="r84-S1-auO" secondAttribute="trailing" constant="20" id="yO8-N6-VAW"/>
                 </constraints>
             </view>
