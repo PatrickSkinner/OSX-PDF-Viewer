@@ -20,7 +20,7 @@
                 <outlet property="pdfSelector" destination="Js9-Gr-1lb" id="g6A-LD-rt0"/>
                 <outlet property="searchBar" destination="H4m-QC-Rhz" id="lBg-wT-uHG"/>
                 <outlet property="textField" destination="bQk-pX-CzM" id="IWj-ep-7Ss"/>
-                <outlet property="thumbs" destination="yXO-Uc-Knf" id="aEH-Dw-O3q"/>
+                <outlet property="thumbs" destination="Lpw-pz-AmV" id="nSL-db-u8q"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
                 <outlet property="zoomIn" destination="9kh-J7-1uc" id="uaW-h5-vf5"/>
             </connections>
@@ -684,10 +684,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="700" height="659"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <pdfThumbnailView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yXO-Uc-Knf">
-                        <rect key="frame" x="20" y="70" width="216" height="569"/>
-                        <size key="thumbnailSize" width="64" height="64"/>
-                    </pdfThumbnailView>
                     <pdfView autoresizesSubviews="NO" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7zR-h4-pKf">
                         <rect key="frame" x="244" y="70" width="436" height="569"/>
                     </pdfView>
@@ -699,19 +695,23 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <pdfThumbnailView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lpw-pz-AmV">
+                        <rect key="frame" x="20" y="70" width="216" height="569"/>
+                        <size key="thumbnailSize" width="64" height="64"/>
+                    </pdfThumbnailView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="7zR-h4-pKf" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="3Xi-Ic-hHj"/>
+                    <constraint firstItem="Lpw-pz-AmV" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="6wT-sy-xhi"/>
                     <constraint firstItem="bQk-pX-CzM" firstAttribute="top" secondItem="7zR-h4-pKf" secondAttribute="bottom" constant="8" id="6yX-W9-Wqo"/>
+                    <constraint firstItem="7zR-h4-pKf" firstAttribute="leading" secondItem="Lpw-pz-AmV" secondAttribute="trailing" constant="8" id="7fD-Oq-RL3"/>
                     <constraint firstAttribute="bottom" secondItem="7zR-h4-pKf" secondAttribute="bottom" constant="160" id="9Dc-OD-oMc"/>
-                    <constraint firstItem="yXO-Uc-Knf" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="KMd-he-k3m"/>
+                    <constraint firstItem="bQk-pX-CzM" firstAttribute="top" secondItem="Lpw-pz-AmV" secondAttribute="bottom" constant="8" id="IBx-SO-YJB"/>
                     <constraint firstAttribute="trailing" secondItem="7zR-h4-pKf" secondAttribute="trailing" constant="20" id="KnW-EH-0mD"/>
                     <constraint firstAttribute="trailing" secondItem="bQk-pX-CzM" secondAttribute="trailing" constant="20" id="Rp2-NF-8ui"/>
-                    <constraint firstItem="7zR-h4-pKf" firstAttribute="leading" secondItem="yXO-Uc-Knf" secondAttribute="trailing" constant="8" id="SQQ-hU-Ec2"/>
-                    <constraint firstAttribute="bottom" secondItem="yXO-Uc-Knf" secondAttribute="bottom" constant="160" id="eYj-Iv-V3Y"/>
                     <constraint firstAttribute="bottom" secondItem="bQk-pX-CzM" secondAttribute="bottom" constant="20" id="k8o-CF-vlZ"/>
                     <constraint firstItem="bQk-pX-CzM" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="rGG-ns-Aow"/>
-                    <constraint firstItem="yXO-Uc-Knf" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="v94-UP-VJV"/>
+                    <constraint firstItem="Lpw-pz-AmV" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="yug-RA-LXo"/>
                 </constraints>
             </view>
             <toolbar key="toolbar" implicitIdentifier="B06DAA46-B245-47A9-9641-31123572F490" explicitIdentifier="Toolbar" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="9kh-J7-1uc">

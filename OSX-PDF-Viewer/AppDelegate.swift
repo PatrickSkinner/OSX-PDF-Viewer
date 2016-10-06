@@ -64,6 +64,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     self.pdfSelector.addItemWithTitle(document.lastPathComponent!)
                 }
                 self.pdfSelector.selectItemAtIndex(self.urls.endIndex-1)
+                
+                self.ourPDF.layoutDocumentView()
             }
         }
     }
