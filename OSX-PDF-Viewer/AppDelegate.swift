@@ -15,9 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var ourPDF: PDFView!
     @IBOutlet weak var thumbs: PDFThumbnailView!
-    @IBOutlet weak var zoomIn: NSToolbar!
     @IBOutlet weak var pageNum: NSTextField!
-    @IBOutlet weak var searchBar: NSToolbarItem!
     @IBOutlet weak var pdfSelector: NSPopUpButton!
     @IBOutlet weak var textField: NSTextField!
     
