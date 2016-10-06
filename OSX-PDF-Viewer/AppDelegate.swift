@@ -77,6 +77,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(noteUpdated), name: NSTextDidChangeNotification, object: nil)
         
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if var noteDictionary = defaults.dictionaryForKey("noteDictionaryKey"){
+            notes = noteDictionary as! [String: String]
+        }
+        
         //self.window.setContentBorderThickness(32, forEdge: NSRectEdge.MinY)
     }
     
@@ -212,6 +217,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let noteKey = ourPDF.currentPage().label() + (pdf!.documentURL().URLByDeletingPathExtension?.lastPathComponent)!
             notes[noteKey] = textField.stringValue
         }
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(notes, forKey: "noteDictionaryKey")
     }
     
     func notePageUpdated(){
