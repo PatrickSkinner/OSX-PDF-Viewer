@@ -678,21 +678,21 @@
         <window title="OSX-PDF-Viewer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="700" height="749"/>
+            <rect key="contentRect" x="335" y="390" width="700" height="659"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="700" height="749"/>
+                <rect key="frame" x="0.0" y="0.0" width="700" height="659"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <pdfThumbnailView ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yXO-Uc-Knf">
-                        <rect key="frame" x="20" y="160" width="216" height="569"/>
+                        <rect key="frame" x="20" y="70" width="216" height="569"/>
                         <size key="thumbnailSize" width="64" height="64"/>
                     </pdfThumbnailView>
                     <pdfView autoresizesSubviews="NO" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7zR-h4-pKf">
-                        <rect key="frame" x="244" y="160" width="436" height="569"/>
+                        <rect key="frame" x="244" y="70" width="436" height="569"/>
                     </pdfView>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bQk-pX-CzM">
-                        <rect key="frame" x="20" y="20" width="660" height="132"/>
+                    <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQk-pX-CzM">
+                        <rect key="frame" x="20" y="20" width="660" height="42"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="HIr-s2-iws">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -704,12 +704,12 @@
                     <constraint firstItem="7zR-h4-pKf" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="3Xi-Ic-hHj"/>
                     <constraint firstItem="bQk-pX-CzM" firstAttribute="top" secondItem="7zR-h4-pKf" secondAttribute="bottom" constant="8" id="6yX-W9-Wqo"/>
                     <constraint firstAttribute="bottom" secondItem="7zR-h4-pKf" secondAttribute="bottom" constant="160" id="9Dc-OD-oMc"/>
-                    <constraint firstAttribute="bottom" secondItem="bQk-pX-CzM" secondAttribute="bottom" constant="20" id="FlT-jD-ThB"/>
                     <constraint firstItem="yXO-Uc-Knf" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="KMd-he-k3m"/>
                     <constraint firstAttribute="trailing" secondItem="7zR-h4-pKf" secondAttribute="trailing" constant="20" id="KnW-EH-0mD"/>
                     <constraint firstAttribute="trailing" secondItem="bQk-pX-CzM" secondAttribute="trailing" constant="20" id="Rp2-NF-8ui"/>
                     <constraint firstItem="7zR-h4-pKf" firstAttribute="leading" secondItem="yXO-Uc-Knf" secondAttribute="trailing" constant="8" id="SQQ-hU-Ec2"/>
                     <constraint firstAttribute="bottom" secondItem="yXO-Uc-Knf" secondAttribute="bottom" constant="160" id="eYj-Iv-V3Y"/>
+                    <constraint firstAttribute="bottom" secondItem="bQk-pX-CzM" secondAttribute="bottom" constant="20" id="k8o-CF-vlZ"/>
                     <constraint firstItem="bQk-pX-CzM" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="rGG-ns-Aow"/>
                     <constraint firstItem="yXO-Uc-Knf" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="v94-UP-VJV"/>
                 </constraints>
@@ -907,7 +907,7 @@
                     <toolbarItem reference="jMR-Ud-QWz"/>
                 </defaultToolbarItems>
             </toolbar>
-            <point key="canvasLocation" x="397" y="1008.5"/>
+            <point key="canvasLocation" x="397" y="963.5"/>
         </window>
     </objects>
     <resources>
