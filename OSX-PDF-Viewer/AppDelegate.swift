@@ -88,16 +88,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.pdfSelector.removeAllItems()
         
     }
-    
-    func updatePageNum(){
-        pageNum.stringValue = ourPDF.currentPage().label()
-        notePageUpdated()
-    }
 
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
     }
     
+    
+    //////////////////////////////////
+    //        Zoom Functions        //
+    //////////////////////////////////
 
     @IBAction func zoomIn(sender: AnyObject) {
         ourPDF.setAutoScales(false)
@@ -112,6 +111,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func scale(sender: AnyObject) {
         ourPDF.setAutoScales(true)
     }
+    
+    //////////////////////////////////
+    //        Page Navigation       //
+    //////////////////////////////////
     
     @IBAction func previousPage(sender: AnyObject){
         if (ourPDF.canGoToPreviousPage()){
@@ -130,6 +133,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             ourPDF.goToPage(pdf.pageAtIndex(Int(pageNum.stringValue)!-1))
         }
     }
+    
+    func updatePageNum(){
+        pageNum.stringValue = ourPDF.currentPage().label()
+        notePageUpdated()
+    }
+    
+    //////////////////////////////////
+    //      Searching Functions     //
+    //////////////////////////////////
     
     @IBAction func search(sender: AnyObject){
         if(ourPDF != nil && pdf != nil){
@@ -200,6 +212,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ourPDF.setHighlightedSelections(selection)
     }
     
+    //////////////////////////////////
+    // Document Selection Functions //
+    //////////////////////////////////
+    
     @IBAction func selectPDF(sender: AnyObject) {
         let list: NSPopUpButton = sender as! NSPopUpButton
         
@@ -251,6 +267,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         notePageUpdated()
     }
     
+    //////////////////////////////////
+    //     Note Taking Functions    //
+    //////////////////////////////////
+    
     func noteUpdated(){
         if(pdf != nil){
             let noteKey = ourPDF.currentPage().label() + (pdf!.documentURL().URLByDeletingPathExtension?.lastPathComponent)!
@@ -269,6 +289,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             textField.stringValue = notes[noteKey]!
         }
     }
+    
+    //////////////////////////////////
+    //     Note Taking Functions    //
+    //////////////////////////////////
 
     @IBAction func bookmarkSave(sender: AnyObject) {
         if(pdf != nil){
