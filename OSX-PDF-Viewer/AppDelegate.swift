@@ -77,7 +77,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(noteUpdated), name: NSTextDidChangeNotification, object: nil)
         
-        self.window.setContentBorderThickness(32, forEdge: NSRectEdge.MinY)
+        //self.window.setContentBorderThickness(32, forEdge: NSRectEdge.MinY)
     }
     
     func updatePageNum(){
