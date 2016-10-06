@@ -201,8 +201,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.pdf = PDFDocument(URL: urls[list.indexOfSelectedItem] )
         self.ourPDF.setDocument(self.pdf)
         
-        //self.thumbs.setPDFView(self.ourPDF)
-        
         let dict: NSDictionary = self.pdf.documentAttributes()
         if(dict["PDFDocumentTitleAttribute"] != nil){
             self.window.title = dict["PDFDocumentTitleAttribute"] as! String
@@ -211,6 +209,52 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         notePageUpdated()
         
+    }
+    
+    @IBAction func goBackDocument(sender: AnyObject){
+        if(ourPDF != nil && urls.count > 1){
+            var index = urls.indexOf(pdf.documentURL())
+            
+            if(index == 0){
+                index = urls.count - 1
+            } else {
+                index = index! - 1
+            }
+            
+            self.pdf = PDFDocument(URL: urls[index!] )
+            self.ourPDF.setDocument(self.pdf)
+                
+            let dict: NSDictionary = self.pdf.documentAttributes()
+            if(dict["PDFDocumentTitleAttribute"] != nil){
+                self.window.title = dict["PDFDocumentTitleAttribute"] as! String
+            } else if(self.urls[index!].lastPathComponent != nil){
+                self.window.title = self.urls[index!].lastPathComponent!
+            }
+            notePageUpdated()
+        }
+    }
+    
+    @IBAction func goForwardDocument(sender: AnyObject){
+        if(ourPDF != nil && urls.count > 1){
+            var index = urls.indexOf(pdf.documentURL())
+            
+            if(index == urls.count - 1){
+                index = 0
+            } else {
+                index = index! + 1
+            }
+            
+            self.pdf = PDFDocument(URL: urls[index!] )
+            self.ourPDF.setDocument(self.pdf)
+            
+            let dict: NSDictionary = self.pdf.documentAttributes()
+            if(dict["PDFDocumentTitleAttribute"] != nil){
+                self.window.title = dict["PDFDocumentTitleAttribute"] as! String
+            } else if(self.urls[index!].lastPathComponent != nil){
+                self.window.title = self.urls[index!].lastPathComponent!
+            }
+            notePageUpdated()
+        }
     }
     
     

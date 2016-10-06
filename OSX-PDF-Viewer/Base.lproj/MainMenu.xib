@@ -807,7 +807,7 @@
                     <constraint firstAttribute="trailing" secondItem="r84-S1-auO" secondAttribute="trailing" constant="20" id="yO8-N6-VAW"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="DF144A9B-098D-4BBE-AE61-3DE8B9DC38DA" explicitIdentifier="Toolbar" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="9kh-J7-1uc">
+            <toolbar key="toolbar" implicitIdentifier="74D6646A-75BE-4E1D-8488-77167B31AD79" explicitIdentifier="Toolbar" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="9kh-J7-1uc">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="gKq-rY-WQg"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="dC5-A1-dNa"/>
@@ -863,12 +863,12 @@
                             </connections>
                         </button>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="75F1CABA-840D-42C6-9064-42921F682F74" label="" paletteLabel="Go Back" image="NSGoRightTemplate" id="o7d-rU-ReM">
+                    <toolbarItem implicitItemIdentifier="75F1CABA-840D-42C6-9064-42921F682F74" label="" paletteLabel="Page Forward" image="NSGoRightTemplate" id="o7d-rU-ReM">
                         <nil key="toolTip"/>
                         <size key="minSize" width="36" height="25"/>
                         <size key="maxSize" width="36" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="LwM-z9-zsc">
-                            <rect key="frame" x="8" y="14" width="36" height="25"/>
+                            <rect key="frame" x="22" y="14" width="36" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSGoRightTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rd3-Lz-CsU">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -934,6 +934,38 @@
                             </connections>
                         </popUpButton>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="5F392D81-92FF-4013-AD25-A071CA64C9CF" label="" paletteLabel="Document Forward" image="NSGoRightTemplate" id="wOn-uD-8vx">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="36" height="25"/>
+                        <size key="maxSize" width="36" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="L2b-DH-wmF">
+                            <rect key="frame" x="36" y="14" width="36" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSGoRightTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ycI-2F-w7x">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="goForwardDocument:" target="Voe-Tx-rLC" id="A9J-XB-aJR"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="C84D5016-5FFF-41EB-B05E-D2CFD53851D3" label="" paletteLabel="Document Back" image="NSGoLeftTemplate" id="GDK-aI-xFx">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="36" height="25"/>
+                        <size key="maxSize" width="36" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="QTt-wY-eky">
+                            <rect key="frame" x="27" y="14" width="36" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSGoLeftTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WDj-Ng-mdh">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="goBackDocument:" target="Voe-Tx-rLC" id="H8B-j7-7X8"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="LQB-jl-JpT"/>
@@ -944,7 +976,9 @@
                     <toolbarItem reference="Z3m-Lw-2Wd"/>
                     <toolbarItem reference="o7d-rU-ReM"/>
                     <toolbarItem reference="Vur-VM-BIf"/>
+                    <toolbarItem reference="GDK-aI-xFx"/>
                     <toolbarItem reference="jMR-Ud-QWz"/>
+                    <toolbarItem reference="wOn-uD-8vx"/>
                 </defaultToolbarItems>
             </toolbar>
             <contentBorderThickness minY="36"/>
