@@ -198,16 +198,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func selectPDF(sender: AnyObject) {
         let list: NSPopUpButton = sender as! NSPopUpButton
-        self.pdf = PDFDocument(URL: urls[list.indexOfSelectedItem] )
-        self.ourPDF.setDocument(self.pdf)
         
-        let dict: NSDictionary = self.pdf.documentAttributes()
-        if(dict["PDFDocumentTitleAttribute"] != nil){
-            self.window.title = dict["PDFDocumentTitleAttribute"] as! String
-        } else if(self.urls[list.indexOfSelectedItem].lastPathComponent != nil){
-            self.window.title = self.urls[list.indexOfSelectedItem].lastPathComponent!
-        }
-        notePageUpdated()
+        openByIndex(list.indexOfSelectedItem)
         
     }
     
@@ -221,16 +213,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 index = index! - 1
             }
             
-            self.pdf = PDFDocument(URL: urls[index!] )
-            self.ourPDF.setDocument(self.pdf)
-                
-            let dict: NSDictionary = self.pdf.documentAttributes()
-            if(dict["PDFDocumentTitleAttribute"] != nil){
-                self.window.title = dict["PDFDocumentTitleAttribute"] as! String
-            } else if(self.urls[index!].lastPathComponent != nil){
-                self.window.title = self.urls[index!].lastPathComponent!
-            }
-            notePageUpdated()
+            openByIndex(index!)
         }
     }
     
@@ -244,19 +227,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 index = index! + 1
             }
             
-            self.pdf = PDFDocument(URL: urls[index!] )
-            self.ourPDF.setDocument(self.pdf)
-            
-            let dict: NSDictionary = self.pdf.documentAttributes()
-            if(dict["PDFDocumentTitleAttribute"] != nil){
-                self.window.title = dict["PDFDocumentTitleAttribute"] as! String
-            } else if(self.urls[index!].lastPathComponent != nil){
-                self.window.title = self.urls[index!].lastPathComponent!
-            }
-            notePageUpdated()
+            openByIndex(index!)
         }
     }
     
+    func openByIndex(index: Int){
+        self.pdf = PDFDocument(URL: urls[index] )
+        self.ourPDF.setDocument(self.pdf)
+        
+        let dict: NSDictionary = self.pdf.documentAttributes()
+        if(dict["PDFDocumentTitleAttribute"] != nil){
+            self.window.title = dict["PDFDocumentTitleAttribute"] as! String
+        } else if(self.urls[index].lastPathComponent != nil){
+            self.window.title = self.urls[index].lastPathComponent!
+        }
+        
+        pdfSelector.selectItemAtIndex(index)
+        updatePageNum()
+        notePageUpdated()
+    }
     
     func noteUpdated(){
         if(pdf != nil){
