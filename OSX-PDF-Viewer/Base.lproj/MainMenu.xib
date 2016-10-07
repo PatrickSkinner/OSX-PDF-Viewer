@@ -21,6 +21,9 @@
                 <outlet property="pageNum" destination="MCf-w9-pkp" id="UuX-Ga-atv"/>
                 <outlet property="pdfSelector" destination="Js9-Gr-1lb" id="g6A-LD-rt0"/>
                 <outlet property="saveBookmark" destination="RC0-bT-QJh" id="zWO-Dw-Fxd"/>
+                <outlet property="startOpenDocument" destination="STC-Jk-7WS" id="Pgq-s0-4CP"/>
+                <outlet property="startPopUp" destination="NC8-mI-eiz" id="aLB-hP-C51"/>
+                <outlet property="startWindow" destination="HO8-J2-qq9" id="vv4-zj-nkP"/>
                 <outlet property="textField" destination="bQk-pX-CzM" id="IWj-ep-7Ss"/>
                 <outlet property="thumbs" destination="Lpw-pz-AmV" id="nSL-db-u8q"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
@@ -211,7 +214,7 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="OSX-PDF-Viewer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+        <window title="OSX-PDF-Viewer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="700" height="684"/>
@@ -535,6 +538,54 @@
             </toolbar>
             <contentBorderThickness minY="36"/>
             <point key="canvasLocation" x="551" y="973"/>
+        </window>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="HO8-J2-qq9">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="283" y="305" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <view key="contentView" id="dXX-5y-mzB">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tBe-oN-Cgc">
+                        <rect key="frame" x="18" y="233" width="37" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="hSl-Mr-zXp">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="STC-Jk-7WS">
+                        <rect key="frame" x="14" y="13" width="139" height="32"/>
+                        <buttonCell key="cell" type="push" title="Open Document" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0bz-Ub-VfE">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="Open:" target="Voe-Tx-rLC" id="Yws-nd-396"/>
+                        </connections>
+                    </button>
+                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NC8-mI-eiz">
+                        <rect key="frame" x="387" y="17" width="76" height="26"/>
+                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="fR2-uK-wDC">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="qD3-oJ-fok">
+                                <items>
+                                    <menuItem title="Item 1" id="izG-Vp-j8q"/>
+                                    <menuItem title="Item 2" id="mba-cT-dXg"/>
+                                    <menuItem title="Item 3" id="J9T-ri-LUk"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                        <connections>
+                            <action selector="openRecent:" target="Voe-Tx-rLC" id="5Ce-VM-ZJq"/>
+                        </connections>
+                    </popUpButton>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="-185" y="855"/>
         </window>
     </objects>
     <resources>

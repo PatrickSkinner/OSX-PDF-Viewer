@@ -12,6 +12,7 @@ import Quartz
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
+    @IBOutlet weak var startWindow: NSWindow!
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var ourPDF: PDFView!
     @IBOutlet weak var thumbs: PDFThumbnailView!
@@ -21,6 +22,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var bookmarkSelector: NSPopUpButton!
     @IBOutlet weak var saveBookmark: NSButton!
     @IBOutlet weak var bookmarkTitle: NSTextField!
+    
+    @IBOutlet weak var startOpenDocument: NSButton!
+    @IBOutlet weak var startPopUp: NSPopUpButton!
+    
     
     var pdf: PDFDocument!
     
@@ -32,8 +37,51 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var notes = [String: String]()
     var bookmarks = [String: [String]]()
+    var recentDocuments = [String]()
+    
+    
+    //////////////////////////////////
+    //          StartWindow         //
+    //////////////////////////////////
+    @IBAction func openRecent(sender: AnyObject) {
+        let list: NSPopUpButton = sender as! NSPopUpButton
+        
+        if (list.titleOfSelectedItem != "Recent Documents"){
+            openByIndex(list.indexOfSelectedItem + 1, recentflag: true)
+        }
+        
+        self.window.setIsVisible(true)
+        self.startWindow.setIsVisible(false)
+        
+        self.ourPDF.setDocument(self.pdf)
+        self.ourPDF.setAutoScales(true)
+        
+        var thumbSize: NSSize = NSSize()
+        thumbSize.width = 120
+        thumbSize.height = 200
+        self.thumbs.setThumbnailSize(thumbSize)
+        self.thumbs.setPDFView(self.ourPDF)
+
+        
+        self.bookmarkSelector.removeAllItems()
+        self.bookmarkSelector.addItemWithTitle("Select Bookmark")
+        
+        for (key, array) in self.bookmarks {
+            if(array[1] == pdf.documentURL().absoluteString){
+                self.bookmarkSelector.addItemWithTitle(key)
+            }
+        }
+        
+        self.ourPDF.layoutDocumentView()
+        self.pdfSelector.selectItemAtIndex(0)
+        self.notePageUpdated()
+
+    }
+    
     
     @IBAction func Open(sender: AnyObject) {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
         let openPanel = NSOpenPanel()
         openPanel.allowsMultipleSelection = true
         openPanel.canChooseDirectories = false
@@ -44,7 +92,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if result == NSFileHandlingPanelOKButton {
                 for url in openPanel.URLs{
                     self.urls.append(url)
+                    if (self.recentDocuments.count < 6){
+                        self.recentDocuments.append(url.absoluteString)
+                        
+                        defaults.setObject(self.recentDocuments, forKey: "recentDictionaryKey")
+                    } else {
+                        for item in self.recentDocuments{
+                            if (self.recentDocuments.indexOf(item) > 0){
+                                self.recentDocuments[self.recentDocuments.indexOf(item)! - 1] = item
+                            }
+                        }
+                        self.recentDocuments.insert(url.absoluteString, atIndex: self.recentDocuments.count)
+                        defaults.setObject(self.recentDocuments, forKey: "recentDictionaryKey")
+                    }
+                    
                 }
+                
+                
                 self.pdf = PDFDocument(URL: self.urls[self.urls.endIndex-1])
                 self.ourPDF.setDocument(self.pdf)
                 self.ourPDF.setAutoScales(true)
@@ -79,8 +143,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.ourPDF.layoutDocumentView()
                 
                 self.notePageUpdated()
+                
+                self.window.setIsVisible(true)
+                self.startWindow.setIsVisible(false)
+                
             }
+            
         }
+        
     }
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
@@ -100,10 +170,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             bookmarks = bookmarkDictionary as! [String: [String]]
         }
         
+        if let recentDictionary = defaults.arrayForKey("recentDictionaryKey"){
+            recentDocuments = recentDictionary as! [String]
+        }
+        
+        self.startPopUp.removeAllItems()
         self.bookmarkSelector.removeAllItems()
         self.pdfSelector.removeAllItems()
         
         self.bookmarkSelector.addItemWithTitle("Select Bookmark")
+        self.startPopUp.addItemWithTitle("Recent Documents")
+        
+        for item in self.recentDocuments{
+            self.startPopUp.addItemWithTitle((NSURL(fileURLWithPath: item).URLByDeletingPathExtension?.lastPathComponent)!)
+        }
+        
+        print(recentDocuments)
         
     }
 
@@ -237,7 +319,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func selectPDF(sender: AnyObject) {
         let list: NSPopUpButton = sender as! NSPopUpButton
         
-        openByIndex(list.indexOfSelectedItem)
+        openByIndex(list.indexOfSelectedItem, recentflag: false)
         
         self.bookmarkSelector.removeAllItems()
         self.bookmarkSelector.addItemWithTitle("Select Bookmark")
@@ -260,7 +342,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 index = index! - 1
             }
             
-            openByIndex(index!)
+            openByIndex(index!, recentflag: false)
         }
     }
     
@@ -274,20 +356,38 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 index = index! + 1
             }
             
-            openByIndex(index!)
+            openByIndex(index!, recentflag: false)
 
         }
     }
     
-    func openByIndex(index: Int){
-        self.pdf = PDFDocument(URL: urls[index] )
-        self.ourPDF.setDocument(self.pdf)
-        
-        let dict: NSDictionary = self.pdf.documentAttributes()
-        if(dict["PDFDocumentTitleAttribute"] != nil){
-            self.window.title = dict["PDFDocumentTitleAttribute"] as! String
-        } else if(self.urls[index].lastPathComponent != nil){
-            self.window.title = self.urls[index].lastPathComponent!
+    func openByIndex(index: Int, recentflag: Bool){
+        if(recentflag){
+            urls.append(NSURL(string: recentDocuments[index])!)
+            self.pdf = PDFDocument(URL: NSURL(string: recentDocuments[index]))
+            
+            self.ourPDF.setDocument(self.pdf)
+            
+            let dict: NSDictionary = self.pdf.documentAttributes()
+            if(dict["PDFDocumentTitleAttribute"] != nil){
+                self.window.title = dict["PDFDocumentTitleAttribute"] as! String
+            } else if(NSURL(fileURLWithPath: recentDocuments[index]).lastPathComponent != nil){
+                self.window.title = NSURL(fileURLWithPath: recentDocuments[index]).lastPathComponent!
+            }
+            
+            self.pdfSelector.addItemWithTitle(self.pdf.documentURL().lastPathComponent!)
+            self.pdfSelector.selectItemAtIndex(0)
+        } else {
+            self.pdf = PDFDocument(URL: urls[index])
+            
+            self.ourPDF.setDocument(self.pdf)
+            
+            let dict: NSDictionary = self.pdf.documentAttributes()
+            if(dict["PDFDocumentTitleAttribute"] != nil){
+                self.window.title = dict["PDFDocumentTitleAttribute"] as! String
+            } else if(self.urls[index].lastPathComponent != nil){
+                self.window.title = self.urls[index].lastPathComponent!
+            }
         }
         
         pdfSelector.selectItemAtIndex(index)
@@ -303,6 +403,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
     }
+    
+
     
     //////////////////////////////////
     //     Note Taking Functions    //
@@ -362,9 +464,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     
-    
-    
-   
 
 }
 
