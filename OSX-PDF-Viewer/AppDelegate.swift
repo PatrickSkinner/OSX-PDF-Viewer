@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  OSX-PDF-Viewer
 //
-//  Created by Patrick Skinner 💯 on 9/27/16.
+//  Created by Patrick Skinner 💯 and Cassidy Mowat 🔥 on 9/27/16.
 //  Copyright © 2016 Patrick Skinner. All rights reserved.
 //
 
@@ -79,7 +79,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     }
     
-    
+    //Create a openPanel to select one or more PDFs to display
     @IBAction func Open(sender: AnyObject) {
         
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -153,7 +153,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
     }
-
+    
+    //Create all the needed observers and load all persistent data.
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         
         window.contentMinSize = NSSize(width: 700, height: 700)

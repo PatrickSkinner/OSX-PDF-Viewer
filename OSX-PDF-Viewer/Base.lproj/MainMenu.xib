@@ -570,10 +570,10 @@
                                     <menuItem title="Item 3" id="J9T-ri-LUk"/>
                                 </items>
                             </menu>
+                            <connections>
+                                <action selector="openRecent:" target="Voe-Tx-rLC" id="SZ3-f2-6Xf"/>
+                            </connections>
                         </popUpButtonCell>
-                        <connections>
-                            <action selector="openRecent:" target="Voe-Tx-rLC" id="5Ce-VM-ZJq"/>
-                        </connections>
                     </popUpButton>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t49-Wb-ROI">
                         <rect key="frame" x="34" y="119" width="413" height="45"/>
