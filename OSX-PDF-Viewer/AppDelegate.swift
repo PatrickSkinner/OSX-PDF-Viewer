@@ -48,33 +48,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if (list.titleOfSelectedItem != "Recent Documents"){
             openByIndex(list.indexOfSelectedItem + 1, recentflag: true)
-        }
         
-        self.window.setIsVisible(true)
-        self.startWindow.setIsVisible(false)
+            self.window.setIsVisible(true)
+            self.startWindow.setIsVisible(false)
         
-        self.ourPDF.setDocument(self.pdf)
-        self.ourPDF.setAutoScales(true)
+            self.ourPDF.setDocument(self.pdf)
+            self.ourPDF.setAutoScales(true)
         
-        var thumbSize: NSSize = NSSize()
-        thumbSize.width = 120
-        thumbSize.height = 200
-        self.thumbs.setThumbnailSize(thumbSize)
-        self.thumbs.setPDFView(self.ourPDF)
+            var thumbSize: NSSize = NSSize()
+            thumbSize.width = 120
+            thumbSize.height = 200
+            self.thumbs.setThumbnailSize(thumbSize)
+            self.thumbs.setPDFView(self.ourPDF)
 
         
-        self.bookmarkSelector.removeAllItems()
-        self.bookmarkSelector.addItemWithTitle("Select Bookmark")
+            self.bookmarkSelector.removeAllItems()
+            self.bookmarkSelector.addItemWithTitle("Select Bookmark")
         
-        for (key, array) in self.bookmarks {
-            if(array[1] == pdf.documentURL().absoluteString){
-                self.bookmarkSelector.addItemWithTitle(key)
+            for (key, array) in self.bookmarks {
+                if(array[1] == pdf.documentURL().absoluteString){
+                    self.bookmarkSelector.addItemWithTitle(key)
+                }
             }
-        }
         
-        self.ourPDF.layoutDocumentView()
-        self.pdfSelector.selectItemAtIndex(0)
-        self.notePageUpdated()
+            self.ourPDF.layoutDocumentView()
+            self.pdfSelector.selectItemAtIndex(0)
+            self.notePageUpdated()
+            
+        }
 
     }
     
@@ -185,12 +186,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.startPopUp.addItemWithTitle((NSURL(fileURLWithPath: item).URLByDeletingPathExtension?.lastPathComponent)!)
         }
         
-        print(recentDocuments)
+        // DEBUG LINE CLEAR RECENT 
+        
+        //defaults.setObject([String](), forKey: "recentDictionaryKey")
+        
         
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
-        // Insert code here to tear down your application
     }
     
     
@@ -363,16 +366,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func openByIndex(index: Int, recentflag: Bool){
         if(recentflag){
-            urls.append(NSURL(string: recentDocuments[index])!)
-            self.pdf = PDFDocument(URL: NSURL(string: recentDocuments[index]))
+            urls.append(NSURL(string: recentDocuments[index-2])!)
+            self.pdf = PDFDocument(URL: NSURL(string: recentDocuments[index-2]))
             
             self.ourPDF.setDocument(self.pdf)
             
             let dict: NSDictionary = self.pdf.documentAttributes()
             if(dict["PDFDocumentTitleAttribute"] != nil){
                 self.window.title = dict["PDFDocumentTitleAttribute"] as! String
-            } else if(NSURL(fileURLWithPath: recentDocuments[index]).lastPathComponent != nil){
-                self.window.title = NSURL(fileURLWithPath: recentDocuments[index]).lastPathComponent!
+            } else if(NSURL(fileURLWithPath: recentDocuments[index-2]).lastPathComponent != nil){
+                self.window.title = NSURL(fileURLWithPath: recentDocuments[index-2]).lastPathComponent!
             }
             
             self.pdfSelector.addItemWithTitle(self.pdf.documentURL().lastPathComponent!)
@@ -388,9 +391,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             } else if(self.urls[index].lastPathComponent != nil){
                 self.window.title = self.urls[index].lastPathComponent!
             }
+            
+            pdfSelector.selectItemAtIndex(index)
         }
         
-        pdfSelector.selectItemAtIndex(index)
         updatePageNum()
         notePageUpdated()
         
