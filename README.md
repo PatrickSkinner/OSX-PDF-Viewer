@@ -1,6 +1,6 @@
 # OSX-PDF-Viewer
 
-A PDF viewer created for a 3rd year Computer Science project. A Cocoa application created using Swift and the PDFkit provided by the Quartz framework.
+A PDF viewer created for a 3rd year Computer Science project. A Cocoa application created using Swift and the PDFkit provided by the Quartz framework. Created by Patrick Skinner and Cassidy Mowat.
 
 •	Navigation through a PDF document, back/forward and to a given page
 
